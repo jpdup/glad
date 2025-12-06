@@ -179,16 +179,16 @@ if (!arg.silent) {
   console.timeEnd('Completed')
 }
 
+const upDependencyCount = glad.graph.getUpDependenciesCount()
+if (upDependencyCount > 0) {
+  console.error(chalk.yellow(`Found ${upDependencyCount} up dependencies`))
+}
+
 const circularCount = glad.graph.getCircularDependenciesCount()
 if (circularCount > 0) {
   console.error(chalk.red(`Found ${circularCount} circular dependencies`))
   // noinspection JSUnresolvedVariable
   process.exit(100)
-}
-
-const upDependencyCount = glad.graph.getUpDependenciesCount()
-if (upDependencyCount > 0) {
-  console.error(chalk.yellow(`Found ${upDependencyCount} up dependencies`))
 }
 
 /**
