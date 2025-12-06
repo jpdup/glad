@@ -13,7 +13,6 @@ const fs = require('fs')
 const { exec } = require('node:child_process')
 const packageJSon = require('../package.json')
 
-// eslint-disable-next-line no-unused-expressions
 // noinspection JSUnresolvedFunction,JSUnresolvedVariable
 const arg = yargs(hideBin(process.argv))
   .usage('Usage: glad < path > [options]  "Generates an SVG layer diagram file based on your TS & JS source files dependencies"')

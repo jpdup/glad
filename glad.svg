@@ -150,13 +150,13 @@
       </g>
       <g id='Node_render'>
         <rect x="39" y="304" width="927" height="222" rx="2" ry="2" class="nodeFolder"/>
-        <g id='Node_renderAsPoster.js'>
+        <g id='Node_renderAsLayers.js'>
           <rect x="56.5" y="339" width="292" height="72" rx="8" ry="8" class="nodeFile"/>
         </g>
-        <g id='Node_renderAsGrid.js'>
+        <g id='Node_renderAsPoster.js'>
           <rect x="356.5" y="339" width="292" height="72" rx="8" ry="8" class="nodeFile"/>
         </g>
-        <g id='Node_renderAsLayers.js'>
+        <g id='Node_renderAsGrid.js'>
           <rect x="656.5" y="339" width="292" height="72" rx="8" ry="8" class="nodeFile"/>
         </g>
         <g id='Node_renderBase.js'>
@@ -267,17 +267,17 @@ container.js</title>
 ⬇
 graph.js</title>
     </path>
-    <path class="line" d="M632.5 280 C 642.5 317,362.5 318, 372.5 355" fill="none" stroke="#377E22">
+    <path class="line" d="M632.5 280 C 642.5 317,662.5 318, 672.5 355" fill="none" stroke="#377E22">
       <title>glad.js
 ⬇
 renderAsGrid.js</title>
     </path>
-    <path class="line" d="M632.5 280 C 642.5 317,662.5 318, 672.5 355" fill="none" stroke="#377E22">
+    <path class="line" d="M632.5 280 C 642.5 317,62.5 318, 72.5 355" fill="none" stroke="#377E22">
       <title>glad.js
 ⬇
 renderAsLayers.js</title>
     </path>
-    <path class="line" d="M632.5 280 C 642.5 317,62.5 318, 72.5 355" fill="none" stroke="#377E22">
+    <path class="line" d="M632.5 280 C 642.5 317,362.5 318, 372.5 355" fill="none" stroke="#377E22">
       <title>glad.js
 ⬇
 renderAsPoster.js</title>
@@ -347,67 +347,72 @@ container.js</title>
 ⬇
 layer.js</title>
     </path>
-    <path class="line" d="M632.5 395 C 649.5 650,205.5 650, 222.5 905" fill="none" stroke="#377E22">
+    <path class="line" d="M932.5 395 C 949.5 650,205.5 650, 222.5 905" fill="none" stroke="#377E22">
       <title>renderAsGrid.js
 ⬇
 constants.js</title>
     </path>
-    <path class="line" d="M632.5 395 C 646.5 610,358.5 610, 372.5 825" fill="none" stroke="#377E22">
+    <path class="line" d="M932.5 395 C 946.5 610,358.5 610, 372.5 825" fill="none" stroke="#377E22">
       <title>renderAsGrid.js
 ⬇
 container.js</title>
     </path>
-    <path class="line" d="M632.5 395 C 642.5 490,212.5 490, 222.5 585" fill="none" stroke="#377E22">
-      <title>renderAsGrid.js
-⬇
-graph.js</title>
-    </path>
-    <path class="line" d="M632.5 395 C 642.5 415,362.5 415, 372.5 435" fill="none" stroke="#377E22">
-      <title>renderAsGrid.js
-⬇
-renderBase.js</title>
-    </path>
-    <path class="line" d="M932.5 395 C 949.5 650,205.5 650, 222.5 905" fill="none" stroke="#377E22">
-      <title>renderAsLayers.js
-⬇
-constants.js</title>
-    </path>
     <path class="line" d="M932.5 395 C 942.5 490,212.5 490, 222.5 585" fill="none" stroke="#377E22">
-      <title>renderAsLayers.js
+      <title>renderAsGrid.js
 ⬇
 graph.js</title>
-    </path>
-    <path class="line" d="M932.5 395 C 942.5 490,512.5 490, 522.5 585" fill="none" stroke="#377E22">
-      <title>renderAsLayers.js
-⬇
-layers.js</title>
     </path>
     <path class="line" d="M932.5 395 C 942.5 415,362.5 415, 372.5 435" fill="none" stroke="#377E22">
-      <title>renderAsLayers.js
+      <title>renderAsGrid.js
 ⬇
 renderBase.js</title>
     </path>
     <path class="line" d="M332.5 395 C 349.5 650,205.5 650, 222.5 905" fill="none" stroke="#377E22">
-      <title>renderAsPoster.js
+      <title>renderAsLayers.js
 ⬇
 constants.js</title>
     </path>
     <path class="line" d="M332.5 395 C 346.5 610,358.5 610, 372.5 825" fill="none" stroke="#377E22">
-      <title>renderAsPoster.js
+      <title>renderAsLayers.js
 ⬇
 container.js</title>
     </path>
     <path class="line" d="M332.5 395 C 342.5 490,212.5 490, 222.5 585" fill="none" stroke="#377E22">
-      <title>renderAsPoster.js
+      <title>renderAsLayers.js
 ⬇
 graph.js</title>
     </path>
     <path class="line" d="M332.5 395 C 342.5 490,512.5 490, 522.5 585" fill="none" stroke="#377E22">
-      <title>renderAsPoster.js
+      <title>renderAsLayers.js
 ⬇
 layers.js</title>
     </path>
     <path class="line" d="M332.5 395 C 342.5 415,362.5 415, 372.5 435" fill="none" stroke="#377E22">
+      <title>renderAsLayers.js
+⬇
+renderBase.js</title>
+    </path>
+    <path class="line" d="M632.5 395 C 649.5 650,205.5 650, 222.5 905" fill="none" stroke="#377E22">
+      <title>renderAsPoster.js
+⬇
+constants.js</title>
+    </path>
+    <path class="line" d="M632.5 395 C 646.5 610,358.5 610, 372.5 825" fill="none" stroke="#377E22">
+      <title>renderAsPoster.js
+⬇
+container.js</title>
+    </path>
+    <path class="line" d="M632.5 395 C 642.5 490,212.5 490, 222.5 585" fill="none" stroke="#377E22">
+      <title>renderAsPoster.js
+⬇
+graph.js</title>
+    </path>
+    <path class="line" d="M632.5 395 C 642.5 490,512.5 490, 522.5 585" fill="none" stroke="#377E22">
+      <title>renderAsPoster.js
+⬇
+layers.js</title>
+    </path>
+    <path class="line" d="M632.5 395 C 642.5 415,362.5 415, 372.5 435" fill="none" stroke="#377E22">
       <title>renderAsPoster.js
 ⬇
 renderBase.js</title>
@@ -482,17 +487,17 @@ container.js</title>
 ⬇
 graph.js</title>
     </path>
-    <path class="line" d="M465 130 C 475 242,362.5 243, 372.5 355" fill="none" stroke="#377E22">
+    <path class="line" d="M465 130 C 475 242,662.5 243, 672.5 355" fill="none" stroke="#377E22">
       <title>test.js
 ⬇
 renderAsGrid.js</title>
     </path>
-    <path class="line" d="M465 130 C 475 242,662.5 243, 672.5 355" fill="none" stroke="#377E22">
+    <path class="line" d="M465 130 C 475 242,62.5 243, 72.5 355" fill="none" stroke="#377E22">
       <title>test.js
 ⬇
 renderAsLayers.js</title>
     </path>
-    <path class="line" d="M465 130 C 475 242,62.5 243, 72.5 355" fill="none" stroke="#377E22">
+    <path class="line" d="M465 130 C 475 242,362.5 243, 372.5 355" fill="none" stroke="#377E22">
       <title>test.js
 ⬇
 renderAsPoster.js</title>
@@ -523,11 +528,11 @@ glad.js</title>
         </g>
       </g>
       <g id='Counters_render'>
-        <g id='Counters_renderAsPoster.js'>
+        <g id='Counters_renderAsLayers.js'>
           <g>
             <circle cx="332.5" cy="395" r="10" fill="green"/>
             <text x="332.5" y="395" fill="white" font-size="10" text-anchor="middle" dominant-baseline="central">5</text>
-            <title>renderAsPoster.js
+            <title>renderAsLayers.js
 ⬇
 1 glad/lib/models/constants.js
 2 glad/lib/models/container.js
@@ -541,13 +546,34 @@ glad.js</title>
             <title>1 glad/lib/glad.js
 2 glad/test/test.js
 ⬇
+renderAsLayers.js</title>
+          </g>
+        </g>
+        <g id='Counters_renderAsPoster.js'>
+          <g>
+            <circle cx="632.5" cy="395" r="10" fill="green"/>
+            <text x="632.5" y="395" fill="white" font-size="10" text-anchor="middle" dominant-baseline="central">5</text>
+            <title>renderAsPoster.js
+⬇
+1 glad/lib/models/constants.js
+2 glad/lib/models/container.js
+3 glad/lib/models/graph.js
+4 glad/lib/models/layers.js
+5 glad/lib/render/renderBase.js</title>
+          </g>
+          <g>
+            <circle cx="372.5" cy="355" r="10" fill="blue"/>
+            <text x="372.5" y="355" fill="white" font-size="10" text-anchor="middle" dominant-baseline="central">2</text>
+            <title>1 glad/lib/glad.js
+2 glad/test/test.js
+⬇
 renderAsPoster.js</title>
           </g>
         </g>
         <g id='Counters_renderAsGrid.js'>
           <g>
-            <circle cx="632.5" cy="395" r="10" fill="green"/>
-            <text x="632.5" y="395" fill="white" font-size="10" text-anchor="middle" dominant-baseline="central">4</text>
+            <circle cx="932.5" cy="395" r="10" fill="green"/>
+            <text x="932.5" y="395" fill="white" font-size="10" text-anchor="middle" dominant-baseline="central">4</text>
             <title>renderAsGrid.js
 ⬇
 1 glad/lib/models/constants.js
@@ -556,32 +582,12 @@ renderAsPoster.js</title>
 4 glad/lib/render/renderBase.js</title>
           </g>
           <g>
-            <circle cx="372.5" cy="355" r="10" fill="blue"/>
-            <text x="372.5" y="355" fill="white" font-size="10" text-anchor="middle" dominant-baseline="central">2</text>
-            <title>1 glad/lib/glad.js
-2 glad/test/test.js
-⬇
-renderAsGrid.js</title>
-          </g>
-        </g>
-        <g id='Counters_renderAsLayers.js'>
-          <g>
-            <circle cx="932.5" cy="395" r="10" fill="green"/>
-            <text x="932.5" y="395" fill="white" font-size="10" text-anchor="middle" dominant-baseline="central">4</text>
-            <title>renderAsLayers.js
-⬇
-1 glad/lib/models/constants.js
-2 glad/lib/models/graph.js
-3 glad/lib/models/layers.js
-4 glad/lib/render/renderBase.js</title>
-          </g>
-          <g>
             <circle cx="672.5" cy="355" r="10" fill="blue"/>
             <text x="672.5" y="355" fill="white" font-size="10" text-anchor="middle" dominant-baseline="central">2</text>
             <title>1 glad/lib/glad.js
 2 glad/test/test.js
 ⬇
-renderAsLayers.js</title>
+renderAsGrid.js</title>
           </g>
         </g>
         <g id='Counters_renderBase.js'>
@@ -740,7 +746,7 @@ containers.js</title>
           </g>
           <g>
             <circle cx="372.5" cy="825" r="10" fill="blue"/>
-            <text x="372.5" y="825" fill="white" font-size="10" text-anchor="middle" dominant-baseline="central">10</text>
+            <text x="372.5" y="825" fill="white" font-size="10" text-anchor="middle" dominant-baseline="central">11</text>
             <title>1 glad/lib/glad.js
 2 glad/lib/models/containers.js
 3 glad/lib/models/edge.js
@@ -748,9 +754,10 @@ containers.js</title>
 5 glad/lib/models/graph.js
 6 glad/lib/models/layers.js
 7 glad/lib/render/renderAsGrid.js
-8 glad/lib/render/renderAsPoster.js
-9 glad/lib/render/renderBase.js
-10 glad/test/test.js
+8 glad/lib/render/renderAsLayers.js
+9 glad/lib/render/renderAsPoster.js
+10 glad/lib/render/renderBase.js
+11 glad/test/test.js
 ⬇
 container.js</title>
           </g>
@@ -857,15 +864,15 @@ strings.js</title>
       </g>
       <g id='Labels_render'>
         <text class="folderName" x="45" y="310">render</text>
-        <text x="45" y="520" fill='black' font-size="75%">4 files, 6 incoming, 20 outgoing, path: .../glad/lib/</text>
+        <text x="45" y="520" fill='black' font-size="75%">4 files, 6 incoming, 21 outgoing, path: .../glad/lib/</text>
+        <g id='Labels_renderAsLayers.js'>
+          <text class="nodeName" x="202.5" y="375" font-size="120%">renderAsLayers.js</text>
+        </g>
         <g id='Labels_renderAsPoster.js'>
-          <text class="nodeName" x="202.5" y="375" font-size="120%">renderAsPoster.js</text>
+          <text class="nodeName" x="502.5" y="375" font-size="120%">renderAsPoster.js</text>
         </g>
         <g id='Labels_renderAsGrid.js'>
-          <text class="nodeName" x="502.5" y="375" font-size="120%">renderAsGrid.js</text>
-        </g>
-        <g id='Labels_renderAsLayers.js'>
-          <text class="nodeName" x="802.5" y="375" font-size="120%">renderAsLayers.js</text>
+          <text class="nodeName" x="802.5" y="375" font-size="120%">renderAsGrid.js</text>
         </g>
         <g id='Labels_renderBase.js'>
           <text class="nodeName" x="502.5" y="455" font-size="120%">renderBase.js</text>
@@ -873,7 +880,7 @@ strings.js</title>
       </g>
       <g id='Labels_models'>
         <text class="folderName" x="195" y="540">models</text>
-        <text x="195" y="990" fill='black' font-size="75%">9 files, 25 incoming, 1 outgoing, path: .../glad/lib/</text>
+        <text x="195" y="990" fill='black' font-size="75%">9 files, 26 incoming, 1 outgoing, path: .../glad/lib/</text>
         <g id='Labels_graph.js'>
           <text class="nodeName" x="352.5" y="605" font-size="120%">graph.js</text>
         </g>
