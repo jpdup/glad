@@ -2,6 +2,10 @@
 
 All notable changes to this project will be documented in this file.
 
+## [1.2.6]  2025-12-07
+
+    - Display count of "circular" and "up" dependencies
+
 ## [1.2.5]  2025-12-06
 
     - Update packages
