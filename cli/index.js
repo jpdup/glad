@@ -11,6 +11,7 @@ import { hideBin } from 'yargs/helpers'
 const require = createRequire(import.meta.url)
 const fs = require('fs')
 const { exec } = require('node:child_process')
+const path = require('path')
 const packageJSon = require('../package.json')
 
 // noinspection JSUnresolvedFunction,JSUnresolvedVariable
@@ -136,9 +137,39 @@ if (!arg.silent) {
 
 const glad = new GLAD(arg)
 
+/**
+ * Helper to detect swift project
+ * @param {string} input
+ * @returns {boolean}
+ */
+function isSwiftProject (input) {
+  const dir = input || '.'
+  if (!fs.existsSync(dir)) return false
+
+  // If input is a file, check extension
+  const stat = fs.statSync(dir)
+  if (stat.isFile()) {
+    return dir.endsWith('.swift')
+  }
+
+  // If dir, check for Package.swift or .xcodeproj or .swift files
+  try {
+    if (fs.existsSync(path.join(dir, 'Package.swift'))) return true
+    const files = fs.readdirSync(dir)
+    if (files.some(f => f.endsWith('.xcodeproj'))) return true
+    if (files.some(f => f.endsWith('.swift'))) return true
+  } catch (e) {
+    return false
+  }
+  return false
+}
+
 if (fs.existsSync('./pubspec.yaml')) {
   //  Dart Project
   runDartDept()
+} else if (isSwiftProject(arg.input)) {
+  // Swift Project
+  glad.scanSwiftSourceFilesBuildGraphAndGenerateSvg()
 } else {
   // NodeJS project
   glad.scanSourceFilesBuildGraphAndGenerateSvg()

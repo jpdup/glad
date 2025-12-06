@@ -2,9 +2,15 @@
 
 All notable changes to this project will be documented in this file.
 
+## [1.2.5]  2025-12-06
+
+    - Update packages
+    - Fix LINT warnings
+    - Support Swift projects
+
 ## [1.2.4]  2024-01-06
 
-    - Improve Flutter/Dar dependency container names
+    - Improve Flutter/Dart dependency container names
 
 ## [1.2.3]  2023-12-04
 
