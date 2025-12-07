@@ -179,14 +179,19 @@ if (!arg.silent) {
   console.timeEnd('Completed')
 }
 
+const totalNodes = glad.graph.getAllNodes().length
+const totalEdges = glad.graph.edges.length
+
+console.info(`Nodes: ${totalNodes}, Edges: ${totalEdges}`)
+
 const upDependencyCount = glad.graph.getUpDependenciesCount()
 if (upDependencyCount > 0) {
-  console.error(chalk.yellow(`Found ${upDependencyCount} up dependencies`))
+  console.error(chalk.yellow(`Upward dependencies: ${upDependencyCount}`))
 }
 
 const circularCount = glad.graph.getCircularDependenciesCount()
 if (circularCount > 0) {
-  console.error(chalk.red(`Found ${circularCount} circular dependencies`))
+  console.error(chalk.red(`Circular dependencies: ${circularCount}`))
   // noinspection JSUnresolvedVariable
   process.exit(100)
 }
