@@ -1,8 +1,10 @@
-## HOW TO RUN THE DEMO ##
+# HOW TO RUN THE DEMO
+
 ```node index.js```
 
 ## Generate Posters
-```
+
+```bash
 glad
-glad -l -o poster-layers.svg
+glad -l -o myGraph.svg
 ```

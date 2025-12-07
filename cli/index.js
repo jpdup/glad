@@ -175,14 +175,12 @@ if (fs.existsSync('./pubspec.yaml')) {
   glad.scanSourceFilesBuildGraphAndGenerateSvg()
 }
 
-if (!arg.silent) {
-  console.timeEnd('Completed')
-}
-
 const totalNodes = glad.graph.getAllNodes().length
 const totalEdges = glad.graph.edges.length
 
-console.info(`Nodes: ${totalNodes}, Edges: ${totalEdges}`)
+if (!arg.silent) {
+  console.info(`Nodes: ${totalNodes}, Edges: ${totalEdges}`)
+}
 
 const upDependencyCount = glad.graph.getUpDependenciesCount()
 if (upDependencyCount > 0) {
@@ -194,6 +192,10 @@ if (circularCount > 0) {
   console.error(chalk.red(`Circular dependencies: ${circularCount}`))
   // noinspection JSUnresolvedVariable
   process.exit(100)
+}
+
+if (!arg.silent) {
+  console.timeEnd('Completed')
 }
 
 /**

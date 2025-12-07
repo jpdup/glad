@@ -2,6 +2,10 @@
 
 All notable changes to this project will be documented in this file.
 
+## [1.2.8]  2025-12-07
+
+    - fix for DRY
+
 ## [1.2.7]  2025-12-07
 
     - Display total node and edge counts
