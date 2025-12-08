@@ -2,6 +2,11 @@
 
 All notable changes to this project will be documented in this file.
 
+## [1.3.0]  2025-12-08
+
+    - Use Tree-Sister for parsing Swift files
+    - Add tests for JS, TS, SWIFT
+
 ## [1.2.9]  2025-12-08
 
     - Improve Swift parsing: Discard comments and text string

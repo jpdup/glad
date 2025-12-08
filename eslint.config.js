@@ -20,5 +20,15 @@ export default [
       'jsdoc/check-indentation': 1,
       'linebreak-style': ['error', 'unix']
     }
+  },
+  {
+    files: ['test/**/*.js', 'test_*.js'],
+    languageOptions: {
+      globals: {
+        ...globals.node,
+        ...globals.es2021,
+        ...globals.mocha
+      }
+    }
   }
 ]
