@@ -105,6 +105,11 @@ const arg = yargs(hideBin(process.argv))
     type: 'boolean',
     default: false
   })
+  .option('orphans', {
+    description: 'List all orphan nodes (nodes with no edges)',
+    type: 'boolean',
+    default: false
+  })
   .option('silent', {
     alias: 's',
     description: 'No output except for errors',
@@ -177,25 +182,46 @@ if (fs.existsSync('./pubspec.yaml')) {
 
 const totalNodes = glad.graph.getAllNodes().length
 const totalEdges = glad.graph.edges.length
+const orphaNodes = glad.graph.getOrphanNodes()
+const orphanCount = orphaNodes.length
+const upDependencyCount = glad.graph.getUpDependenciesCount()
+const circularCount = glad.graph.getCircularDependenciesCount()
+
+// Handle --orphans flag
+if (arg.orphans) {
+  if (orphanCount === 0) {
+    console.info('No orphan nodes found.')
+  } else {
+    console.info(`Found ${orphanCount} orphan node(s):`)
+    orphaNodes.forEach(node => {
+      console.info(`  - ${node.name}`)
+    })
+  }
+}
 
 if (!arg.silent) {
   console.info(`Nodes: ${totalNodes}, Edges: ${totalEdges}`)
-}
 
-const upDependencyCount = glad.graph.getUpDependenciesCount()
-if (upDependencyCount > 0) {
-  console.error(chalk.yellow(`Upward dependencies: ${upDependencyCount}`))
-}
+  // Warning of orphan nodes
+  if (orphanCount > 0) {
+    console.error(chalk.yellow(`Orphan nodes: ${orphanCount}`))
+  }
 
-const circularCount = glad.graph.getCircularDependenciesCount()
-if (circularCount > 0) {
-  console.error(chalk.red(`Circular dependencies: ${circularCount}`))
-  // noinspection JSUnresolvedVariable
-  process.exit(100)
-}
+  // Warning of upward nodes
 
-if (!arg.silent) {
+  if (upDependencyCount > 0) {
+    console.error(chalk.yellow(`Upward dependencies: ${upDependencyCount}`))
+  }
+
+  // Error of circular edges
+  if (circularCount > 0) {
+    console.error(chalk.red(`Circular dependencies: ${circularCount}`))
+  }
   console.timeEnd('Completed')
+}
+
+if (circularCount > 0) {
+  process.exit(100)
 }
 
 /**

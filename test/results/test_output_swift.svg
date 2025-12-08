@@ -21,6 +21,11 @@
       opacity: 0.9;
       stroke: gray;
     }
+    .nodeFileOrphan {
+      fill: #ff6b6b !important;
+      opacity: 0.9;
+      stroke: gray;
+    }
     .folderName {
       font-size: 180%;
       fill : white;

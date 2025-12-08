@@ -71,6 +71,54 @@ describe('Models', function () {
     assert.strictEqual(nodeLand.sub.length, 2)
     assert.strictEqual(nodePeople.sub.length, 2)
   })
+
+  it('Orphan nodes', function () {
+    const orphanNodes = graph.getOrphanNodes()
+
+    // Nodes with edges: Barn2, PersonA, PersonB, Chickens, Potato, Yam
+    // Only leaf nodes with no edges should be orphans: Cows
+    // Containers with files (Land, Barn1, People, Animals) should NOT be orphans
+    const orphanNodeNames = orphanNodes.map(node => node.name)
+
+    assert(orphanNodeNames.includes('Cows'), 'Cows should be orphan (leaf with no edges)')
+
+    // Containers with files should NOT be orphans
+    assert(!orphanNodeNames.includes('Land'), 'Land should not be orphan (has files)')
+    assert(!orphanNodeNames.includes('Barn1'), 'Barn1 should not be orphan (has files)')
+    assert(!orphanNodeNames.includes('People'), 'People should not be orphan (has files)')
+    assert(!orphanNodeNames.includes('Animals'), 'Animals should not be orphan (has files)')
+
+    // Verify connected nodes are NOT orphans
+    assert(!orphanNodeNames.includes('Barn2'), 'Barn2 should not be orphan')
+    assert(!orphanNodeNames.includes('PersonA'), 'PersonA should not be orphan')
+    assert(!orphanNodeNames.includes('PersonB'), 'PersonB should not be orphan')
+    assert(!orphanNodeNames.includes('Chickens'), 'Chickens should not be orphan')
+    assert(!orphanNodeNames.includes('Potato'), 'Potato should not be orphan')
+    assert(!orphanNodeNames.includes('Yam'), 'Yam should not be orphan')
+  })
+
+  it('Single orphan node', function () {
+    // Create a simple graph with one orphan node
+    const simpleGraph = new Graph()
+    simpleGraph.rootNode = new Container(null, 'Root')
+
+    const connectedNode = simpleGraph.rootNode.upsert('Connected')
+    connectedNode.isLeaf = true
+
+    const orphanNode = simpleGraph.rootNode.upsert('Orphan')
+    orphanNode.isLeaf = true
+
+    // Add an edge to make connectedNode non-orphan
+    simpleGraph.upsertEdge(connectedNode, connectedNode) // Self-loop still counts as having an edge
+
+    const orphanNodes = simpleGraph.getOrphanNodes()
+    const orphanNodeNames = orphanNodes.map(node => node.name)
+
+    assert.strictEqual(orphanNodes.length, 1, 'Should have 1 orphan node (only Orphan leaf)')
+    assert(!orphanNodeNames.includes('Root'), 'Root should not be orphan (contains files)')
+    assert(orphanNodeNames.includes('Orphan'), 'Orphan should be orphan')
+    assert(!orphanNodeNames.includes('Connected'), 'Connected should not be orphan')
+  })
 })
 
 describe('SVG layout as Grid', function () {

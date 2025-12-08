@@ -2,6 +2,12 @@
 
 All notable changes to this project will be documented in this file.
 
+## [1.3.1]  2025-12-08
+
+    - Add orphan node detection and visualization
+    - Orphan nodes (files/folders with no edges) highlighted with red backgrounds in SVG outputs
+    - Add --orphans CLI flag to list all orphan nodes    
+
 ## [1.3.0]  2025-12-08
 
     - Use Tree-Sister for parsing Swift files

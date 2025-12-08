@@ -21,6 +21,11 @@
       opacity: 0.9;
       stroke: gray;
     }
+    .nodeFileOrphan {
+      fill: #ff6b6b !important;
+      opacity: 0.9;
+      stroke: gray;
+    }
     .folderName {
       font-size: 180%;
       fill : white;
@@ -120,7 +125,7 @@
         <rect x="39" y="374" width="292" height="72" rx="8" ry="8" class="nodeFile"/>
       </g>
       <g id='Node_Cows'>
-        <rect x="339" y="374" width="292" height="72" rx="8" ry="8" class="nodeFile"/>
+        <rect x="339" y="374" width="292" height="72" rx="8" ry="8" class="nodeFileOrphan"/>
       </g>
     </g>
   </g>
