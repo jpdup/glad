@@ -2,6 +2,10 @@
 
 All notable changes to this project will be documented in this file.
 
+## [1.2.9]  2025-12-08
+
+    - Improve Swift parsing: Discard comments and text string
+
 ## [1.2.8]  2025-12-07
 
     - fix for DRY
