@@ -1,0 +1,1170 @@
+<?xml version="1.0" standalone="no"?>
+<svg width="1410" height="1750" xmlns="http://www.w3.org/2000/svg" font-family="Arial, Helvetica, sans-serif">
+  <style>
+    .layerRectangle {
+      stroke: black;
+      stroke-dasharray: 5,5;
+      fill: url('#layers')
+    }
+    .layerText {
+      fill: purple;
+      font-size: 150%;
+      filter: url(#outlineWhite);
+    }
+    .nodeFolder {
+      fill: #aaaaaa;
+      opacity: 0.3;
+      stroke: whitesmoke;
+    }
+    .nodeFile {
+      fill: #ffffff;
+      opacity: 0.9;
+      stroke: gray;
+    }
+    .folderName {
+      font-size: 180%;
+      fill : white;
+      font-weight: bolder;
+      text-anchor: start;
+      letter-spacing : 1px;
+      dominant-baseline: hanging;
+      filter: url(#shadow);
+    }
+    .nodeName {
+      fill : black;
+      font-weight: bold;
+      text-anchor: middle;
+      dominant-baseline: central;
+      filter: url(#outlineWhite);
+    }
+    .line {
+      fill : none;
+      stroke-width: 3;
+      opacity: 0.5;
+    }
+    .line:hover {
+      stroke-width: 6;
+      opacity: 1;
+    }
+</style>
+  <defs id='idSvgDef'>
+    <linearGradient id="layers" gradientTransform="rotate(90)">
+      <stop offset="0%" stop-color="#691872" stop-opacity="0.1"/>
+      <stop offset="100%" stop-color="#691872" stop-opacity="0.3" />
+    </linearGradient>
+    <filter id="shadow">
+      <feGaussianBlur in="SourceAlpha" stdDeviation="2"/>
+      <feOffset dx="1" dy="1" result="offsetblur"/>
+      <feFlood flood-color="black"/>
+      <feComposite in2="offsetblur" operator="in"/>
+      <feMerge>
+        <feMergeNode/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+    <filter id="outlineWhite">
+      <feMorphology in="SourceAlpha" result="DILATED" operator="dilate" radius="2"/>
+      <feFlood flood-color="white" flood-opacity="0.5" result="WHITE"/>
+      <feComposite in="WHITE" in2="DILATED" operator="in" result="OUTLINE"/>
+      <feMerge>
+        <feMergeNode in="OUTLINE" />
+        <feMergeNode in="SourceGraphic" />
+      </feMerge>
+    </filter>
+    <filter id="outlineBlack">
+      <feMorphology in="SourceAlpha" result="DILATED" operator="dilate" radius="2"/>
+      <feFlood flood-color="black" flood-opacity="0.5" result="BLACK"/>
+      <feComposite in="BLACK" in2="DILATED" operator="in" result="OUTLINE"/>
+      <feMerge>
+        <feMergeNode in="OUTLINE"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+    <marker id='lineEnd' viewBox= '0 -5 30 10' refX='12' orient='auto'>
+      <path d='M0,-16L32,0L0,16' fill='#3058FF' opacity="0.67"/>
+    </marker>
+    <marker id='lineStart' viewBox= '0 -4 8 8' refX='4' orient='auto'>
+      <circle cx='4' r='4' fill='#377E22'/>
+    </marker>
+  </defs>
+  <rect width="100%" height="100%" fill="white"/>
+  <g id='Node_glad'>
+    <rect x="4" y="4" width="1402" height="1742" rx="2" ry="2" class="nodeFolder"/>
+    <g id='Node_lib'>
+      <rect x="224" y="639" width="962" height="1072" rx="2" ry="2" class="nodeFolder"/>
+      <g id='Node_glad.js'>
+        <rect x="559" y="674" width="292" height="72" rx="8" ry="8" class="nodeFile"/>
+      </g>
+      <g id='Node_render'>
+        <rect x="241.5" y="754" width="927" height="222" rx="2" ry="2" class="nodeFolder"/>
+        <g id='Node_renderAsLayers.js'>
+          <rect x="259" y="789" width="292" height="72" rx="8" ry="8" class="nodeFile"/>
+        </g>
+        <g id='Node_renderAsPoster.js'>
+          <rect x="559" y="789" width="292" height="72" rx="8" ry="8" class="nodeFile"/>
+        </g>
+        <g id='Node_renderAsGrid.js'>
+          <rect x="859" y="789" width="292" height="72" rx="8" ry="8" class="nodeFile"/>
+        </g>
+        <g id='Node_renderBase.js'>
+          <rect x="559" y="869" width="292" height="72" rx="8" ry="8" class="nodeFile"/>
+        </g>
+      </g>
+      <g id='Node_models'>
+        <rect x="391.5" y="984" width="627" height="462" rx="2" ry="2" class="nodeFolder"/>
+        <g id='Node_graph.js'>
+          <rect x="409" y="1019" width="292" height="72" rx="8" ry="8" class="nodeFile"/>
+        </g>
+        <g id='Node_layers.js'>
+          <rect x="709" y="1019" width="292" height="72" rx="8" ry="8" class="nodeFile"/>
+        </g>
+        <g id='Node_layer.js'>
+          <rect x="409" y="1099" width="292" height="72" rx="8" ry="8" class="nodeFile"/>
+        </g>
+        <g id='Node_edges.js'>
+          <rect x="709" y="1099" width="292" height="72" rx="8" ry="8" class="nodeFile"/>
+        </g>
+        <g id='Node_edge.js'>
+          <rect x="409" y="1179" width="292" height="72" rx="8" ry="8" class="nodeFile"/>
+        </g>
+        <g id='Node_containers.js'>
+          <rect x="709" y="1179" width="292" height="72" rx="8" ry="8" class="nodeFile"/>
+        </g>
+        <g id='Node_container.js'>
+          <rect x="559" y="1259" width="292" height="72" rx="8" ry="8" class="nodeFile"/>
+        </g>
+        <g id='Node_constants.js'>
+          <rect x="409" y="1339" width="292" height="72" rx="8" ry="8" class="nodeFile"/>
+        </g>
+        <g id='Node_rectangle.js'>
+          <rect x="709" y="1339" width="292" height="72" rx="8" ry="8" class="nodeFile"/>
+        </g>
+      </g>
+      <g id='Node_util'>
+        <rect x="541.5" y="1454" width="327" height="222" rx="2" ry="2" class="nodeFolder"/>
+        <g id='Node_svg.js'>
+          <rect x="559" y="1489" width="292" height="72" rx="8" ry="8" class="nodeFile"/>
+        </g>
+        <g id='Node_strings.js'>
+          <rect x="559" y="1569" width="292" height="72" rx="8" ry="8" class="nodeFile"/>
+        </g>
+      </g>
+    </g>
+    <g id='Node_test'>
+      <rect x="21.5" y="39" width="697" height="592" rx="2" ry="2" class="nodeFolder"/>
+      <g id='Node_demoApp'>
+        <rect x="39" y="74" width="662" height="522" rx="2" ry="2" class="nodeFolder"/>
+        <g id='Node_index.js'>
+          <rect x="224" y="109" width="292" height="72" rx="8" ry="8" class="nodeFile"/>
+        </g>
+        <g id='Node_presentation'>
+          <rect x="206.5" y="189" width="327" height="142" rx="2" ry="2" class="nodeFolder"/>
+          <g id='Node_renderTransportation.js'>
+            <rect x="224" y="224" width="292" height="72" rx="8" ry="8" class="nodeFile"/>
+          </g>
+        </g>
+        <g id='Node_models'>
+          <rect x="56.5" y="339" width="627" height="222" rx="2" ry="2" class="nodeFolder"/>
+          <g id='Node_car.js'>
+            <rect x="74" y="374" width="292" height="72" rx="8" ry="8" class="nodeFile"/>
+          </g>
+          <g id='Node_truck.js'>
+            <rect x="374" y="374" width="292" height="72" rx="8" ry="8" class="nodeFile"/>
+          </g>
+          <g id='Node_transport.js'>
+            <rect x="224" y="454" width="292" height="72" rx="8" ry="8" class="nodeFile"/>
+          </g>
+        </g>
+      </g>
+    </g>
+    <g id='Node_test_ts_integration'>
+      <rect x="726.5" y="39" width="327" height="382" rx="2" ry="2" class="nodeFolder"/>
+      <g id='Node_App.tsx'>
+        <rect x="744" y="74" width="292" height="72" rx="8" ry="8" class="nodeFile"/>
+      </g>
+      <g id='Node_UserComponent.tsx'>
+        <rect x="744" y="154" width="292" height="72" rx="8" ry="8" class="nodeFile"/>
+      </g>
+      <g id='Node_userService.ts'>
+        <rect x="744" y="234" width="292" height="72" rx="8" ry="8" class="nodeFile"/>
+      </g>
+      <g id='Node_types.ts'>
+        <rect x="744" y="314" width="292" height="72" rx="8" ry="8" class="nodeFile"/>
+      </g>
+    </g>
+    <g id='Node_cli'>
+      <rect x="1061.5" y="39" width="327" height="142" rx="2" ry="2" class="nodeFolder"/>
+      <g id='Node_index.js'>
+        <rect x="1079" y="74" width="292" height="72" rx="8" ry="8" class="nodeFile"/>
+      </g>
+    </g>
+  </g>
+  <g id='Edges'>
+    <path class="line" d="M1020 130 C 1030 230,750 230, 760 330" fill="none" stroke="#377E22">
+      <title>App.tsx
+⬇
+types.ts</title>
+    </path>
+    <path class="line" d="M1020 130 C 1030 150,750 150, 760 170" fill="none" stroke="#377E22">
+      <title>App.tsx
+⬇
+UserComponent.tsx</title>
+    </path>
+    <path class="line" d="M1020 130 C 1030 190,750 190, 760 250" fill="none" stroke="#377E22">
+      <title>App.tsx
+⬇
+userService.ts</title>
+    </path>
+    <path class="line" d="M350 430 C 360 450,230 450, 240 470" fill="none" stroke="#377E22">
+      <title>car.js
+⬇
+transport.js</title>
+    </path>
+    <path class="line" d="M835 1315 C 845 1335,415 1335, 425 1355" fill="none" stroke="#377E22">
+      <title>container.js
+⬇
+constants.js</title>
+    </path>
+    <path class="line" d="M835 1315 C 845 1335,715 1335, 725 1355" fill="none" stroke="#377E22">
+      <title>container.js
+⬇
+rectangle.js</title>
+    </path>
+    <path class="line" d="M985 1235 C 995 1295,415 1295, 425 1355" fill="none" stroke="#377E22">
+      <title>containers.js
+⬇
+constants.js</title>
+    </path>
+    <path class="line" d="M985 1235 C 995 1255,565 1255, 575 1275" fill="none" stroke="#377E22">
+      <title>containers.js
+⬇
+container.js</title>
+    </path>
+    <path class="line" d="M685 1235 C 695 1255,565 1255, 575 1275" fill="none" stroke="#377E22">
+      <title>edge.js
+⬇
+container.js</title>
+    </path>
+    <path class="line" d="M985 1155 C 995 1215,565 1215, 575 1275" fill="none" stroke="#377E22">
+      <title>edges.js
+⬇
+container.js</title>
+    </path>
+    <path class="line" d="M985 1155 C 995 1175,415 1175, 425 1195" fill="none" stroke="#377E22">
+      <title>edges.js
+⬇
+edge.js</title>
+    </path>
+    <path class="line" d="M835 730 C 855 1042,405 1043, 425 1355" fill="none" stroke="#377E22">
+      <title>glad.js
+⬇
+constants.js</title>
+    </path>
+    <path class="line" d="M835 730 C 853 1002,557 1003, 575 1275" fill="none" stroke="#377E22">
+      <title>glad.js
+⬇
+container.js</title>
+    </path>
+    <path class="line" d="M835 730 C 845 882,415 883, 425 1035" fill="none" stroke="#377E22">
+      <title>glad.js
+⬇
+graph.js</title>
+    </path>
+    <path class="line" d="M835 730 C 845 882,715 883, 725 1035" fill="none" stroke="#377E22">
+      <title>glad.js
+⬇
+layers.js</title>
+    </path>
+    <path class="line" d="M835 730 C 845 767,865 768, 875 805" fill="none" stroke="#377E22">
+      <title>glad.js
+⬇
+renderAsGrid.js</title>
+    </path>
+    <path class="line" d="M835 730 C 845 767,265 768, 275 805" fill="none" stroke="#377E22">
+      <title>glad.js
+⬇
+renderAsLayers.js</title>
+    </path>
+    <path class="line" d="M835 730 C 845 767,565 768, 575 805" fill="none" stroke="#377E22">
+      <title>glad.js
+⬇
+renderAsPoster.js</title>
+    </path>
+    <path class="line" d="M835 730 C 845 807,565 808, 575 885" fill="none" stroke="#377E22">
+      <title>glad.js
+⬇
+renderBase.js</title>
+    </path>
+    <path class="line" d="M835 730 C 863 1157,547 1158, 575 1585" fill="none" stroke="#377E22">
+      <title>glad.js
+⬇
+strings.js</title>
+    </path>
+    <path class="line" d="M685 1075 C 695 1175,565 1175, 575 1275" fill="none" stroke="#377E22">
+      <title>graph.js
+⬇
+container.js</title>
+    </path>
+    <path class="line" d="M685 1075 C 695 1135,415 1135, 425 1195" fill="none" stroke="#377E22">
+      <title>graph.js
+⬇
+edge.js</title>
+    </path>
+    <path class="line" d="M685 1075 C 695 1095,715 1095, 725 1115" fill="none" stroke="#377E22">
+      <title>graph.js
+⬇
+edges.js</title>
+    </path>
+    <path class="line" d="M685 1075 C 702 1330,558 1330, 575 1585" fill="none" stroke="#377E22">
+      <title>graph.js
+⬇
+strings.js</title>
+    </path>
+    <path class="line" d="M500 165 C 510 277,80 278, 90 390" fill="none" stroke="#377E22">
+      <title>index.js
+⬇
+car.js</title>
+    </path>
+    <path class="line" d="M1355 130 C 1395 742,385 743, 425 1355" fill="none" stroke="#377E22">
+      <title>index.js
+⬇
+constants.js</title>
+    </path>
+    <path class="line" d="M1355 130 C 1373 410,557 410, 575 690" fill="none" stroke="#377E22">
+      <title>index.js
+⬇
+glad.js</title>
+    </path>
+    <path class="line" d="M500 165 C 510 202,230 203, 240 240" fill="none" stroke="#377E22">
+      <title>index.js
+⬇
+renderTransportation.js</title>
+    </path>
+    <path class="line" d="M500 165 C 510 277,380 278, 390 390" fill="none" stroke="#377E22">
+      <title>index.js
+⬇
+truck.js</title>
+    </path>
+    <path class="line" d="M685 1155 C 695 1255,415 1255, 425 1355" fill="none" stroke="#377E22">
+      <title>layer.js
+⬇
+constants.js</title>
+    </path>
+    <path class="line" d="M685 1155 C 695 1175,715 1175, 725 1195" fill="none" stroke="#377E22">
+      <title>layer.js
+⬇
+containers.js</title>
+    </path>
+    <path class="line" d="M685 1155 C 695 1255,715 1255, 725 1355" fill="none" stroke="#377E22">
+      <title>layer.js
+⬇
+rectangle.js</title>
+    </path>
+    <path class="line" d="M985 1075 C 995 1215,415 1215, 425 1355" fill="none" stroke="#377E22">
+      <title>layers.js
+⬇
+constants.js</title>
+    </path>
+    <path class="line" d="M985 1075 C 995 1175,565 1175, 575 1275" fill="none" stroke="#377E22">
+      <title>layers.js
+⬇
+container.js</title>
+    </path>
+    <path class="line" d="M985 1075 C 995 1095,415 1095, 425 1115" fill="none" stroke="#377E22">
+      <title>layers.js
+⬇
+layer.js</title>
+    </path>
+    <path class="line" d="M1135 845 C 1152 1100,408 1100, 425 1355" fill="none" stroke="#377E22">
+      <title>renderAsGrid.js
+⬇
+constants.js</title>
+    </path>
+    <path class="line" d="M1135 845 C 1149 1060,561 1060, 575 1275" fill="none" stroke="#377E22">
+      <title>renderAsGrid.js
+⬇
+container.js</title>
+    </path>
+    <path class="line" d="M1135 845 C 1145 940,415 940, 425 1035" fill="none" stroke="#377E22">
+      <title>renderAsGrid.js
+⬇
+graph.js</title>
+    </path>
+    <path class="line" d="M1135 845 C 1145 865,565 865, 575 885" fill="none" stroke="#377E22">
+      <title>renderAsGrid.js
+⬇
+renderBase.js</title>
+    </path>
+    <path class="line" d="M535 845 C 552 1100,408 1100, 425 1355" fill="none" stroke="#377E22">
+      <title>renderAsLayers.js
+⬇
+constants.js</title>
+    </path>
+    <path class="line" d="M535 845 C 549 1060,561 1060, 575 1275" fill="none" stroke="#377E22">
+      <title>renderAsLayers.js
+⬇
+container.js</title>
+    </path>
+    <path class="line" d="M535 845 C 545 940,415 940, 425 1035" fill="none" stroke="#377E22">
+      <title>renderAsLayers.js
+⬇
+graph.js</title>
+    </path>
+    <path class="line" d="M535 845 C 545 940,715 940, 725 1035" fill="none" stroke="#377E22">
+      <title>renderAsLayers.js
+⬇
+layers.js</title>
+    </path>
+    <path class="line" d="M535 845 C 545 865,565 865, 575 885" fill="none" stroke="#377E22">
+      <title>renderAsLayers.js
+⬇
+renderBase.js</title>
+    </path>
+    <path class="line" d="M835 845 C 852 1100,408 1100, 425 1355" fill="none" stroke="#377E22">
+      <title>renderAsPoster.js
+⬇
+constants.js</title>
+    </path>
+    <path class="line" d="M835 845 C 849 1060,561 1060, 575 1275" fill="none" stroke="#377E22">
+      <title>renderAsPoster.js
+⬇
+container.js</title>
+    </path>
+    <path class="line" d="M835 845 C 845 940,415 940, 425 1035" fill="none" stroke="#377E22">
+      <title>renderAsPoster.js
+⬇
+graph.js</title>
+    </path>
+    <path class="line" d="M835 845 C 845 940,715 940, 725 1035" fill="none" stroke="#377E22">
+      <title>renderAsPoster.js
+⬇
+layers.js</title>
+    </path>
+    <path class="line" d="M835 845 C 845 865,565 865, 575 885" fill="none" stroke="#377E22">
+      <title>renderAsPoster.js
+⬇
+renderBase.js</title>
+    </path>
+    <path class="line" d="M835 925 C 849 1140,411 1140, 425 1355" fill="none" stroke="#377E22">
+      <title>renderBase.js
+⬇
+constants.js</title>
+    </path>
+    <path class="line" d="M835 925 C 846 1100,564 1100, 575 1275" fill="none" stroke="#377E22">
+      <title>renderBase.js
+⬇
+container.js</title>
+    </path>
+    <path class="line" d="M835 925 C 845 1060,415 1060, 425 1195" fill="none" stroke="#377E22">
+      <title>renderBase.js
+⬇
+edge.js</title>
+    </path>
+    <path class="line" d="M835 925 C 845 1020,715 1020, 725 1115" fill="none" stroke="#377E22">
+      <title>renderBase.js
+⬇
+edges.js</title>
+    </path>
+    <path class="line" d="M835 925 C 845 980,415 980, 425 1035" fill="none" stroke="#377E22">
+      <title>renderBase.js
+⬇
+graph.js</title>
+    </path>
+    <path class="line" d="M835 925 C 845 1020,415 1020, 425 1115" fill="none" stroke="#377E22">
+      <title>renderBase.js
+⬇
+layer.js</title>
+    </path>
+    <path class="line" d="M835 925 C 845 980,715 980, 725 1035" fill="none" stroke="#377E22">
+      <title>renderBase.js
+⬇
+layers.js</title>
+    </path>
+    <path class="line" d="M835 925 C 849 1140,711 1140, 725 1355" fill="none" stroke="#377E22">
+      <title>renderBase.js
+⬇
+rectangle.js</title>
+    </path>
+    <path class="line" d="M835 925 C 857 1255,553 1255, 575 1585" fill="none" stroke="#377E22">
+      <title>renderBase.js
+⬇
+strings.js</title>
+    </path>
+    <path class="line" d="M835 925 C 854 1215,556 1215, 575 1505" fill="none" stroke="#377E22">
+      <title>renderBase.js
+⬇
+svg.js</title>
+    </path>
+    <path class="line" d="M500 280 C 510 375,230 375, 240 470" fill="none" stroke="#377E22">
+      <title>renderTransportation.js
+⬇
+transport.js</title>
+    </path>
+    <path class="line" d="M835 1545 C 845 1565,565 1565, 575 1585" fill="none" stroke="#377E22">
+      <title>svg.js
+⬇
+strings.js</title>
+    </path>
+    <path class="line" d="M650 430 C 660 450,230 450, 240 470" fill="none" stroke="#377E22">
+      <title>truck.js
+⬇
+transport.js</title>
+    </path>
+    <path class="line" d="M1020 210 C 1030 270,750 270, 760 330" fill="none" stroke="#377E22">
+      <title>UserComponent.tsx
+⬇
+types.ts</title>
+    </path>
+    <path class="line" d="M1020 210 C 1030 230,750 230, 760 250" fill="none" stroke="#377E22">
+      <title>UserComponent.tsx
+⬇
+userService.ts</title>
+    </path>
+    <path class="line" d="M1020 290 C 1030 310,750 310, 760 330" fill="none" stroke="#377E22">
+      <title>userService.ts
+⬇
+types.ts</title>
+    </path>
+  </g>
+  <g id='Edges_Containers'>
+    <path class="line" d="M725 960 C 735 980,675 980, 685 1000" fill="none" stroke="#377E22">
+    </path>
+    <g>
+      <circle cx="725" cy="960" r="10" fill="green"/>
+      <text x="725" y="960" fill="white" font-size="10" text-anchor="middle" dominant-baseline="central">21</text>
+    </g>
+    <g>
+      <circle cx="685" cy="1000" r="10" fill="blue"/>
+      <text x="685" y="1000" fill="white" font-size="10" text-anchor="middle" dominant-baseline="central">20</text>
+    </g>
+    <path class="line" d="M725 960 C 742 1215,668 1215, 685 1470" fill="none" stroke="#377E22">
+    </path>
+    <g>
+      <circle cx="725" cy="960" r="10" fill="green"/>
+      <text x="725" y="960" fill="white" font-size="10" text-anchor="middle" dominant-baseline="central">21</text>
+    </g>
+    <g>
+      <circle cx="685" cy="1470" r="10" fill="blue"/>
+      <text x="685" y="1470" fill="white" font-size="10" text-anchor="middle" dominant-baseline="central">3</text>
+    </g>
+    <path class="line" d="M725 1430 C 735 1450,675 1450, 685 1470" fill="none" stroke="#377E22">
+    </path>
+    <g>
+      <circle cx="725" cy="1430" r="10" fill="green"/>
+      <text x="725" y="1430" fill="white" font-size="10" text-anchor="middle" dominant-baseline="central">1</text>
+    </g>
+    <g>
+      <circle cx="685" cy="1470" r="10" fill="blue"/>
+      <text x="685" y="1470" fill="white" font-size="10" text-anchor="middle" dominant-baseline="central">3</text>
+    </g>
+    <path class="line" d="M390 315 C 400 335,340 335, 350 355" fill="none" stroke="#377E22">
+    </path>
+    <g>
+      <circle cx="390" cy="315" r="10" fill="green"/>
+      <text x="390" y="315" fill="white" font-size="10" text-anchor="middle" dominant-baseline="central">1</text>
+    </g>
+    <g>
+      <circle cx="350" cy="355" r="10" fill="blue"/>
+      <text x="350" y="355" fill="white" font-size="10" text-anchor="middle" dominant-baseline="central">1</text>
+    </g>
+    <path class="line" d="M1245 165 C 1272 582,658 583, 685 1000" fill="none" stroke="#377E22">
+    </path>
+    <g>
+      <circle cx="1245" cy="165" r="10" fill="green"/>
+      <text x="1245" y="165" fill="white" font-size="10" text-anchor="middle" dominant-baseline="central">2</text>
+    </g>
+    <g>
+      <circle cx="685" cy="1000" r="10" fill="blue"/>
+      <text x="685" y="1000" fill="white" font-size="10" text-anchor="middle" dominant-baseline="central">20</text>
+    </g>
+    <path class="line" d="M1245 165 C 1261 410,669 410, 685 655" fill="none" stroke="#377E22">
+    </path>
+    <g>
+      <circle cx="1245" cy="165" r="10" fill="green"/>
+      <text x="1245" y="165" fill="white" font-size="10" text-anchor="middle" dominant-baseline="central">2</text>
+    </g>
+    <g>
+      <circle cx="685" cy="655" r="10" fill="blue"/>
+      <text x="685" y="655" fill="white" font-size="10" text-anchor="middle" dominant-baseline="central">1</text>
+    </g>
+  </g>
+  <g id='Counters_glad'>
+    <g id='Counters_lib'>
+      <g id='Counters_glad.js'>
+        <g>
+          <circle cx="835" cy="730" r="10" fill="green"/>
+          <text x="835" y="730" fill="white" font-size="10" text-anchor="middle" dominant-baseline="central">9</text>
+          <title>glad.js
+⬇
+1 glad/lib/models/constants.js
+2 glad/lib/models/container.js
+3 glad/lib/models/graph.js
+4 glad/lib/models/layers.js
+5 glad/lib/render/renderAsGrid.js
+6 glad/lib/render/renderAsLayers.js
+7 glad/lib/render/renderAsPoster.js
+8 glad/lib/render/renderBase.js
+9 glad/lib/util/strings.js</title>
+        </g>
+        <g>
+          <circle cx="575" cy="690" r="10" fill="blue"/>
+          <text x="575" y="690" fill="white" font-size="10" text-anchor="middle" dominant-baseline="central">1</text>
+          <title>1 glad/cli/index.js
+⬇
+glad.js</title>
+        </g>
+      </g>
+      <g id='Counters_render'>
+        <g id='Counters_renderAsLayers.js'>
+          <g>
+            <circle cx="535" cy="845" r="10" fill="green"/>
+            <text x="535" y="845" fill="white" font-size="10" text-anchor="middle" dominant-baseline="central">5</text>
+            <title>renderAsLayers.js
+⬇
+1 glad/lib/models/constants.js
+2 glad/lib/models/container.js
+3 glad/lib/models/graph.js
+4 glad/lib/models/layers.js
+5 glad/lib/render/renderBase.js</title>
+          </g>
+          <g>
+            <circle cx="275" cy="805" r="10" fill="blue"/>
+            <text x="275" y="805" fill="white" font-size="10" text-anchor="middle" dominant-baseline="central">1</text>
+            <title>1 glad/lib/glad.js
+⬇
+renderAsLayers.js</title>
+          </g>
+        </g>
+        <g id='Counters_renderAsPoster.js'>
+          <g>
+            <circle cx="835" cy="845" r="10" fill="green"/>
+            <text x="835" y="845" fill="white" font-size="10" text-anchor="middle" dominant-baseline="central">5</text>
+            <title>renderAsPoster.js
+⬇
+1 glad/lib/models/constants.js
+2 glad/lib/models/container.js
+3 glad/lib/models/graph.js
+4 glad/lib/models/layers.js
+5 glad/lib/render/renderBase.js</title>
+          </g>
+          <g>
+            <circle cx="575" cy="805" r="10" fill="blue"/>
+            <text x="575" y="805" fill="white" font-size="10" text-anchor="middle" dominant-baseline="central">1</text>
+            <title>1 glad/lib/glad.js
+⬇
+renderAsPoster.js</title>
+          </g>
+        </g>
+        <g id='Counters_renderAsGrid.js'>
+          <g>
+            <circle cx="1135" cy="845" r="10" fill="green"/>
+            <text x="1135" y="845" fill="white" font-size="10" text-anchor="middle" dominant-baseline="central">4</text>
+            <title>renderAsGrid.js
+⬇
+1 glad/lib/models/constants.js
+2 glad/lib/models/container.js
+3 glad/lib/models/graph.js
+4 glad/lib/render/renderBase.js</title>
+          </g>
+          <g>
+            <circle cx="875" cy="805" r="10" fill="blue"/>
+            <text x="875" y="805" fill="white" font-size="10" text-anchor="middle" dominant-baseline="central">1</text>
+            <title>1 glad/lib/glad.js
+⬇
+renderAsGrid.js</title>
+          </g>
+        </g>
+        <g id='Counters_renderBase.js'>
+          <g>
+            <circle cx="835" cy="925" r="10" fill="green"/>
+            <text x="835" y="925" fill="white" font-size="10" text-anchor="middle" dominant-baseline="central">10</text>
+            <title>renderBase.js
+⬇
+1 glad/lib/models/constants.js
+2 glad/lib/models/container.js
+3 glad/lib/models/edge.js
+4 glad/lib/models/edges.js
+5 glad/lib/models/graph.js
+6 glad/lib/models/layer.js
+7 glad/lib/models/layers.js
+8 glad/lib/models/rectangle.js
+9 glad/lib/util/strings.js
+10 glad/lib/util/svg.js</title>
+          </g>
+          <g>
+            <circle cx="575" cy="885" r="10" fill="blue"/>
+            <text x="575" y="885" fill="white" font-size="10" text-anchor="middle" dominant-baseline="central">4</text>
+            <title>1 glad/lib/glad.js
+2 glad/lib/render/renderAsGrid.js
+3 glad/lib/render/renderAsLayers.js
+4 glad/lib/render/renderAsPoster.js
+⬇
+renderBase.js</title>
+          </g>
+        </g>
+      </g>
+      <g id='Counters_models'>
+        <g id='Counters_graph.js'>
+          <g>
+            <circle cx="685" cy="1075" r="10" fill="green"/>
+            <text x="685" y="1075" fill="white" font-size="10" text-anchor="middle" dominant-baseline="central">4</text>
+            <title>graph.js
+⬇
+1 glad/lib/models/container.js
+2 glad/lib/models/edge.js
+3 glad/lib/models/edges.js
+4 glad/lib/util/strings.js</title>
+          </g>
+          <g>
+            <circle cx="425" cy="1035" r="10" fill="blue"/>
+            <text x="425" y="1035" fill="white" font-size="10" text-anchor="middle" dominant-baseline="central">5</text>
+            <title>1 glad/lib/glad.js
+2 glad/lib/render/renderAsGrid.js
+3 glad/lib/render/renderAsLayers.js
+4 glad/lib/render/renderAsPoster.js
+5 glad/lib/render/renderBase.js
+⬇
+graph.js</title>
+          </g>
+        </g>
+        <g id='Counters_layers.js'>
+          <g>
+            <circle cx="985" cy="1075" r="10" fill="green"/>
+            <text x="985" y="1075" fill="white" font-size="10" text-anchor="middle" dominant-baseline="central">3</text>
+            <title>layers.js
+⬇
+1 glad/lib/models/constants.js
+2 glad/lib/models/container.js
+3 glad/lib/models/layer.js</title>
+          </g>
+          <g>
+            <circle cx="725" cy="1035" r="10" fill="blue"/>
+            <text x="725" y="1035" fill="white" font-size="10" text-anchor="middle" dominant-baseline="central">4</text>
+            <title>1 glad/lib/glad.js
+2 glad/lib/render/renderAsLayers.js
+3 glad/lib/render/renderAsPoster.js
+4 glad/lib/render/renderBase.js
+⬇
+layers.js</title>
+          </g>
+        </g>
+        <g id='Counters_layer.js'>
+          <g>
+            <circle cx="685" cy="1155" r="10" fill="green"/>
+            <text x="685" y="1155" fill="white" font-size="10" text-anchor="middle" dominant-baseline="central">3</text>
+            <title>layer.js
+⬇
+1 glad/lib/models/constants.js
+2 glad/lib/models/containers.js
+3 glad/lib/models/rectangle.js</title>
+          </g>
+          <g>
+            <circle cx="425" cy="1115" r="10" fill="blue"/>
+            <text x="425" y="1115" fill="white" font-size="10" text-anchor="middle" dominant-baseline="central">2</text>
+            <title>1 glad/lib/models/layers.js
+2 glad/lib/render/renderBase.js
+⬇
+layer.js</title>
+          </g>
+        </g>
+        <g id='Counters_edges.js'>
+          <g>
+            <circle cx="985" cy="1155" r="10" fill="green"/>
+            <text x="985" y="1155" fill="white" font-size="10" text-anchor="middle" dominant-baseline="central">2</text>
+            <title>edges.js
+⬇
+1 glad/lib/models/container.js
+2 glad/lib/models/edge.js</title>
+          </g>
+          <g>
+            <circle cx="725" cy="1115" r="10" fill="blue"/>
+            <text x="725" y="1115" fill="white" font-size="10" text-anchor="middle" dominant-baseline="central">2</text>
+            <title>1 glad/lib/models/graph.js
+2 glad/lib/render/renderBase.js
+⬇
+edges.js</title>
+          </g>
+        </g>
+        <g id='Counters_edge.js'>
+          <g>
+            <circle cx="685" cy="1235" r="10" fill="green"/>
+            <text x="685" y="1235" fill="white" font-size="10" text-anchor="middle" dominant-baseline="central">1</text>
+            <title>edge.js
+⬇
+1 glad/lib/models/container.js</title>
+          </g>
+          <g>
+            <circle cx="425" cy="1195" r="10" fill="blue"/>
+            <text x="425" y="1195" fill="white" font-size="10" text-anchor="middle" dominant-baseline="central">3</text>
+            <title>1 glad/lib/models/edges.js
+2 glad/lib/models/graph.js
+3 glad/lib/render/renderBase.js
+⬇
+edge.js</title>
+          </g>
+        </g>
+        <g id='Counters_containers.js'>
+          <g>
+            <circle cx="985" cy="1235" r="10" fill="green"/>
+            <text x="985" y="1235" fill="white" font-size="10" text-anchor="middle" dominant-baseline="central">2</text>
+            <title>containers.js
+⬇
+1 glad/lib/models/constants.js
+2 glad/lib/models/container.js</title>
+          </g>
+          <g>
+            <circle cx="725" cy="1195" r="10" fill="blue"/>
+            <text x="725" y="1195" fill="white" font-size="10" text-anchor="middle" dominant-baseline="central">1</text>
+            <title>1 glad/lib/models/layer.js
+⬇
+containers.js</title>
+          </g>
+        </g>
+        <g id='Counters_container.js'>
+          <g>
+            <circle cx="835" cy="1315" r="10" fill="green"/>
+            <text x="835" y="1315" fill="white" font-size="10" text-anchor="middle" dominant-baseline="central">2</text>
+            <title>container.js
+⬇
+1 glad/lib/models/constants.js
+2 glad/lib/models/rectangle.js</title>
+          </g>
+          <g>
+            <circle cx="575" cy="1275" r="10" fill="blue"/>
+            <text x="575" y="1275" fill="white" font-size="10" text-anchor="middle" dominant-baseline="central">10</text>
+            <title>1 glad/lib/glad.js
+2 glad/lib/models/containers.js
+3 glad/lib/models/edge.js
+4 glad/lib/models/edges.js
+5 glad/lib/models/graph.js
+6 glad/lib/models/layers.js
+7 glad/lib/render/renderAsGrid.js
+8 glad/lib/render/renderAsLayers.js
+9 glad/lib/render/renderAsPoster.js
+10 glad/lib/render/renderBase.js
+⬇
+container.js</title>
+          </g>
+        </g>
+        <g id='Counters_constants.js'>
+          <g>
+            <circle cx="425" cy="1355" r="10" fill="blue"/>
+            <text x="425" y="1355" fill="white" font-size="10" text-anchor="middle" dominant-baseline="central">10</text>
+            <title>1 glad/cli/index.js
+2 glad/lib/glad.js
+3 glad/lib/models/container.js
+4 glad/lib/models/containers.js
+5 glad/lib/models/layer.js
+6 glad/lib/models/layers.js
+7 glad/lib/render/renderAsGrid.js
+8 glad/lib/render/renderAsLayers.js
+9 glad/lib/render/renderAsPoster.js
+10 glad/lib/render/renderBase.js
+⬇
+constants.js</title>
+          </g>
+        </g>
+        <g id='Counters_rectangle.js'>
+          <g>
+            <circle cx="725" cy="1355" r="10" fill="blue"/>
+            <text x="725" y="1355" fill="white" font-size="10" text-anchor="middle" dominant-baseline="central">3</text>
+            <title>1 glad/lib/models/container.js
+2 glad/lib/models/layer.js
+3 glad/lib/render/renderBase.js
+⬇
+rectangle.js</title>
+          </g>
+        </g>
+      </g>
+      <g id='Counters_util'>
+        <g id='Counters_svg.js'>
+          <g>
+            <circle cx="835" cy="1545" r="10" fill="green"/>
+            <text x="835" y="1545" fill="white" font-size="10" text-anchor="middle" dominant-baseline="central">1</text>
+            <title>svg.js
+⬇
+1 glad/lib/util/strings.js</title>
+          </g>
+          <g>
+            <circle cx="575" cy="1505" r="10" fill="blue"/>
+            <text x="575" y="1505" fill="white" font-size="10" text-anchor="middle" dominant-baseline="central">1</text>
+            <title>1 glad/lib/render/renderBase.js
+⬇
+svg.js</title>
+          </g>
+        </g>
+        <g id='Counters_strings.js'>
+          <g>
+            <circle cx="575" cy="1585" r="10" fill="blue"/>
+            <text x="575" y="1585" fill="white" font-size="10" text-anchor="middle" dominant-baseline="central">4</text>
+            <title>1 glad/lib/glad.js
+2 glad/lib/models/graph.js
+3 glad/lib/render/renderBase.js
+4 glad/lib/util/svg.js
+⬇
+strings.js</title>
+          </g>
+        </g>
+      </g>
+    </g>
+    <g id='Counters_test'>
+      <g id='Counters_demoApp'>
+        <g id='Counters_index.js'>
+          <g>
+            <circle cx="500" cy="165" r="10" fill="green"/>
+            <text x="500" y="165" fill="white" font-size="10" text-anchor="middle" dominant-baseline="central">3</text>
+            <title>index.js
+⬇
+1 glad/test/demoApp/models/car.js
+2 glad/test/demoApp/models/truck.js
+3 glad/test/demoApp/presentation/renderTransportation.js</title>
+          </g>
+        </g>
+        <g id='Counters_presentation'>
+          <g id='Counters_renderTransportation.js'>
+            <g>
+              <circle cx="500" cy="280" r="10" fill="green"/>
+              <text x="500" y="280" fill="white" font-size="10" text-anchor="middle" dominant-baseline="central">1</text>
+              <title>renderTransportation.js
+⬇
+1 glad/test/demoApp/models/transport.js</title>
+            </g>
+            <g>
+              <circle cx="240" cy="240" r="10" fill="blue"/>
+              <text x="240" y="240" fill="white" font-size="10" text-anchor="middle" dominant-baseline="central">1</text>
+              <title>1 glad/test/demoApp/index.js
+⬇
+renderTransportation.js</title>
+            </g>
+          </g>
+        </g>
+        <g id='Counters_models'>
+          <g id='Counters_car.js'>
+            <g>
+              <circle cx="350" cy="430" r="10" fill="green"/>
+              <text x="350" y="430" fill="white" font-size="10" text-anchor="middle" dominant-baseline="central">1</text>
+              <title>car.js
+⬇
+1 glad/test/demoApp/models/transport.js</title>
+            </g>
+            <g>
+              <circle cx="90" cy="390" r="10" fill="blue"/>
+              <text x="90" y="390" fill="white" font-size="10" text-anchor="middle" dominant-baseline="central">1</text>
+              <title>1 glad/test/demoApp/index.js
+⬇
+car.js</title>
+            </g>
+          </g>
+          <g id='Counters_truck.js'>
+            <g>
+              <circle cx="650" cy="430" r="10" fill="green"/>
+              <text x="650" y="430" fill="white" font-size="10" text-anchor="middle" dominant-baseline="central">1</text>
+              <title>truck.js
+⬇
+1 glad/test/demoApp/models/transport.js</title>
+            </g>
+            <g>
+              <circle cx="390" cy="390" r="10" fill="blue"/>
+              <text x="390" y="390" fill="white" font-size="10" text-anchor="middle" dominant-baseline="central">1</text>
+              <title>1 glad/test/demoApp/index.js
+⬇
+truck.js</title>
+            </g>
+          </g>
+          <g id='Counters_transport.js'>
+            <g>
+              <circle cx="240" cy="470" r="10" fill="blue"/>
+              <text x="240" y="470" fill="white" font-size="10" text-anchor="middle" dominant-baseline="central">3</text>
+              <title>1 glad/test/demoApp/models/car.js
+2 glad/test/demoApp/models/truck.js
+3 glad/test/demoApp/presentation/renderTransportation.js
+⬇
+transport.js</title>
+            </g>
+          </g>
+        </g>
+      </g>
+    </g>
+    <g id='Counters_test_ts_integration'>
+      <g id='Counters_App.tsx'>
+        <g>
+          <circle cx="1020" cy="130" r="10" fill="green"/>
+          <text x="1020" y="130" fill="white" font-size="10" text-anchor="middle" dominant-baseline="central">3</text>
+          <title>App.tsx
+⬇
+1 glad/test_ts_integration/UserComponent.tsx
+2 glad/test_ts_integration/types.ts
+3 glad/test_ts_integration/userService.ts</title>
+        </g>
+      </g>
+      <g id='Counters_UserComponent.tsx'>
+        <g>
+          <circle cx="1020" cy="210" r="10" fill="green"/>
+          <text x="1020" y="210" fill="white" font-size="10" text-anchor="middle" dominant-baseline="central">2</text>
+          <title>UserComponent.tsx
+⬇
+1 glad/test_ts_integration/types.ts
+2 glad/test_ts_integration/userService.ts</title>
+        </g>
+        <g>
+          <circle cx="760" cy="170" r="10" fill="blue"/>
+          <text x="760" y="170" fill="white" font-size="10" text-anchor="middle" dominant-baseline="central">1</text>
+          <title>1 glad/test_ts_integration/App.tsx
+⬇
+UserComponent.tsx</title>
+        </g>
+      </g>
+      <g id='Counters_userService.ts'>
+        <g>
+          <circle cx="1020" cy="290" r="10" fill="green"/>
+          <text x="1020" y="290" fill="white" font-size="10" text-anchor="middle" dominant-baseline="central">1</text>
+          <title>userService.ts
+⬇
+1 glad/test_ts_integration/types.ts</title>
+        </g>
+        <g>
+          <circle cx="760" cy="250" r="10" fill="blue"/>
+          <text x="760" y="250" fill="white" font-size="10" text-anchor="middle" dominant-baseline="central">2</text>
+          <title>1 glad/test_ts_integration/App.tsx
+2 glad/test_ts_integration/UserComponent.tsx
+⬇
+userService.ts</title>
+        </g>
+      </g>
+      <g id='Counters_types.ts'>
+        <g>
+          <circle cx="760" cy="330" r="10" fill="blue"/>
+          <text x="760" y="330" fill="white" font-size="10" text-anchor="middle" dominant-baseline="central">3</text>
+          <title>1 glad/test_ts_integration/App.tsx
+2 glad/test_ts_integration/UserComponent.tsx
+3 glad/test_ts_integration/userService.ts
+⬇
+types.ts</title>
+        </g>
+      </g>
+    </g>
+    <g id='Counters_cli'>
+      <g id='Counters_index.js'>
+        <g>
+          <circle cx="1355" cy="130" r="10" fill="green"/>
+          <text x="1355" y="130" fill="white" font-size="10" text-anchor="middle" dominant-baseline="central">2</text>
+          <title>index.js
+⬇
+1 glad/lib/glad.js
+2 glad/lib/models/constants.js</title>
+        </g>
+      </g>
+    </g>
+  </g>
+  <g id='Labels_glad'>
+    <text class="folderName" x="10" y="10">glad</text>
+    <g id='Labels_lib'>
+      <text class="folderName" x="230" y="645">lib</text>
+      <g id='Labels_glad.js'>
+        <text class="nodeName" x="705" y="710" font-size="120%">glad.js</text>
+      </g>
+      <g id='Labels_render'>
+        <text class="folderName" x="247.5" y="760">render</text>
+        <g id='Labels_renderAsLayers.js'>
+          <text class="nodeName" x="405" y="825" font-size="120%">renderAsLayers.js</text>
+        </g>
+        <g id='Labels_renderAsPoster.js'>
+          <text class="nodeName" x="705" y="825" font-size="120%">renderAsPoster.js</text>
+        </g>
+        <g id='Labels_renderAsGrid.js'>
+          <text class="nodeName" x="1005" y="825" font-size="120%">renderAsGrid.js</text>
+        </g>
+        <g id='Labels_renderBase.js'>
+          <text class="nodeName" x="705" y="905" font-size="120%">renderBase.js</text>
+        </g>
+      </g>
+      <g id='Labels_models'>
+        <text class="folderName" x="397.5" y="990">models</text>
+        <g id='Labels_graph.js'>
+          <text class="nodeName" x="555" y="1055" font-size="120%">graph.js</text>
+        </g>
+        <g id='Labels_layers.js'>
+          <text class="nodeName" x="855" y="1055" font-size="120%">layers.js</text>
+        </g>
+        <g id='Labels_layer.js'>
+          <text class="nodeName" x="555" y="1135" font-size="120%">layer.js</text>
+        </g>
+        <g id='Labels_edges.js'>
+          <text class="nodeName" x="855" y="1135" font-size="120%">edges.js</text>
+        </g>
+        <g id='Labels_edge.js'>
+          <text class="nodeName" x="555" y="1215" font-size="120%">edge.js</text>
+        </g>
+        <g id='Labels_containers.js'>
+          <text class="nodeName" x="855" y="1215" font-size="120%">containers.js</text>
+        </g>
+        <g id='Labels_container.js'>
+          <text class="nodeName" x="705" y="1295" font-size="120%">container.js</text>
+        </g>
+        <g id='Labels_constants.js'>
+          <text class="nodeName" x="555" y="1375" font-size="120%">constants.js</text>
+        </g>
+        <g id='Labels_rectangle.js'>
+          <text class="nodeName" x="855" y="1375" font-size="120%">rectangle.js</text>
+        </g>
+      </g>
+      <g id='Labels_util'>
+        <text class="folderName" x="547.5" y="1460">util</text>
+        <g id='Labels_svg.js'>
+          <text class="nodeName" x="705" y="1525" font-size="120%">svg.js</text>
+        </g>
+        <g id='Labels_strings.js'>
+          <text class="nodeName" x="705" y="1605" font-size="120%">strings.js</text>
+        </g>
+      </g>
+    </g>
+    <g id='Labels_test'>
+      <text class="folderName" x="27.5" y="45">test</text>
+      <g id='Labels_demoApp'>
+        <text class="folderName" x="45" y="80">demoApp</text>
+        <g id='Labels_index.js'>
+          <text class="nodeName" x="370" y="145" font-size="120%">index.js</text>
+        </g>
+        <g id='Labels_presentation'>
+          <text class="folderName" x="212.5" y="195">presentation</text>
+          <g id='Labels_renderTransportation.js'>
+            <text class="nodeName" x="370" y="260" font-size="120%">renderTransportation.js</text>
+          </g>
+        </g>
+        <g id='Labels_models'>
+          <text class="folderName" x="62.5" y="345">models</text>
+          <g id='Labels_car.js'>
+            <text class="nodeName" x="220" y="410" font-size="120%">car.js</text>
+          </g>
+          <g id='Labels_truck.js'>
+            <text class="nodeName" x="520" y="410" font-size="120%">truck.js</text>
+          </g>
+          <g id='Labels_transport.js'>
+            <text class="nodeName" x="370" y="490" font-size="120%">transport.js</text>
+          </g>
+        </g>
+      </g>
+    </g>
+    <g id='Labels_test_ts_integration'>
+      <text class="folderName" x="732.5" y="45">test_ts_integration</text>
+      <g id='Labels_App.tsx'>
+        <text class="nodeName" x="890" y="110" font-size="120%">App.tsx</text>
+      </g>
+      <g id='Labels_UserComponent.tsx'>
+        <text class="nodeName" x="890" y="190" font-size="120%">UserComponent.tsx</text>
+      </g>
+      <g id='Labels_userService.ts'>
+        <text class="nodeName" x="890" y="270" font-size="120%">userService.ts</text>
+      </g>
+      <g id='Labels_types.ts'>
+        <text class="nodeName" x="890" y="350" font-size="120%">types.ts</text>
+      </g>
+    </g>
+    <g id='Labels_cli'>
+      <text class="folderName" x="1067.5" y="45">cli</text>
+      <g id='Labels_index.js'>
+        <text class="nodeName" x="1225" y="110" font-size="120%">index.js</text>
+      </g>
+    </g>
+  </g>
+</svg>

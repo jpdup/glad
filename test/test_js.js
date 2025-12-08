@@ -1,6 +1,7 @@
 /* eslint-env mocha */
 
 import { GLAD } from '../lib/glad.js'
+import { Constants } from '../lib/models/constants.js'
 import fs from 'fs'
 import path from 'path'
 
@@ -9,8 +10,10 @@ describe('JavaScript Dependency Detection', function () {
     const glad = new GLAD({
       silent: true,
       input: '.',
-      output: 'test_output_js.svg',
-      exclude: '**/*test*.js'
+      output: 'test/results/test_output_js.svg',
+      exclude: '**/*test*.js',
+      edges: Constants.EDGES_BOTH,
+      lineEffect: 'flat'
     })
 
     // Create test JavaScript files

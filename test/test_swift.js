@@ -1,6 +1,7 @@
 /* eslint-env mocha */
 
 import { GLAD } from '../lib/glad.js'
+import { Constants } from '../lib/models/constants.js'
 import fs from 'fs'
 import path from 'path'
 
@@ -9,7 +10,10 @@ describe('Swift Dependency Detection', function () {
     const glad = new GLAD({
       silent: true,
       input: '.',
-      exclude: '**/*test*.js'
+      output: 'test/results/test_output_swift.svg',
+      exclude: '**/*test*.js',
+      edges: Constants.EDGES_BOTH,
+      lineEffect: 'flat'
     })
 
     // Create test Swift files
@@ -96,8 +100,9 @@ public class UserService {
     })
 
     try {
-      // Process Swift files
+      // Process Swift files and generate output
       glad.processSwiftFiles(filePaths)
+      glad.processTheGraph()
 
       // Verify dependencies were created correctly
       const dependencies = glad.allFileImports

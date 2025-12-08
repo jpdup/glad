@@ -11,9 +11,9 @@ import { RenderAsPoster } from '../lib/render/renderAsPoster.js'
 import { GLAD } from '../lib/glad.js'
 
 // Import additional test files
-import '../test_swift_dependency.js'
-import '../test_js_dependency.js'
-import '../test_ts_dependency.js'
+import '../test/test_js.js'
+import '../test/test_ts.js'
+import '../test/test_swift.js'
 
 const graph = new Graph()
 graph.rootNode = new Container(null, 'Farming')
