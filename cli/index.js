@@ -33,8 +33,8 @@ const arg = yargs(hideBin(process.argv))
   })
   .option('exclude', {
     alias: 'e',
-    description: 'File glob to exclude from the analysis, eg: "**/*.test.js"',
-    type: 'string'
+    description: 'File glob patterns to exclude from the analysis, eg: "**/*.test.js" "**/AppLogger*"',
+    type: 'array'
   })
   .option('view', {
     description: 'Type of diagram to generate',

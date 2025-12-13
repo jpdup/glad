@@ -2,6 +2,12 @@
 
 All notable changes to this project will be documented in this file.
 
+## [1.3.2]  2025-12-13
+
+    - Fix --exclude parameter for Swift projects
+    - Support multiple exclude patterns
+    - Improve glob pattern matching for file exclusion
+
 ## [1.3.1]  2025-12-08
 
     - Add orphan node detection and visualization
