@@ -16,8 +16,9 @@ const packageJSon = require('../package.json')
 
 // noinspection JSUnresolvedFunction,JSUnresolvedVariable
 const arg = yargs(hideBin(process.argv))
-  .usage('Usage: glad < path > [options]  "Generates an SVG layer diagram file based on your TS & JS source files dependencies"')
+  .usage('Usage: glad < path | file.dot > [options]  "Generates an SVG layer diagram file based on your source code dependencies or DOT graph files"')
   .example('glad . --view layers -l --edges -hide', '">>> Produce a diagram with no edges, each layers are numbered."')
+  .example('glad myGraph.dot --view layers -l', '">>> Generate layers diagram from DOT graph file."')
   .help('h')
   .alias('h', 'help')
   .option('input', {
@@ -142,34 +143,14 @@ if (!arg.silent) {
 
 const glad = new GLAD(arg)
 
-/**
- * Helper to detect swift project
- * @param {string} input
- * @returns {boolean}
- */
-function isSwiftProject (input) {
-  const dir = input || '.'
-  if (!fs.existsSync(dir)) return false
+//
+// Determine the input context
+//
 
-  // If input is a file, check extension
-  const stat = fs.statSync(dir)
-  if (stat.isFile()) {
-    return dir.endsWith('.swift')
-  }
-
-  // If dir, check for Package.swift or .xcodeproj or .swift files
-  try {
-    if (fs.existsSync(path.join(dir, 'Package.swift'))) return true
-    const files = fs.readdirSync(dir)
-    if (files.some(f => f.endsWith('.xcodeproj'))) return true
-    if (files.some(f => f.endsWith('.swift'))) return true
-  } catch (e) {
-    return false
-  }
-  return false
-}
-
-if (fs.existsSync('./pubspec.yaml')) {
+if (arg.input && arg.input.endsWith('.dot')) {
+  // DOT file input
+  glad.scanDotFileBuildGraphAndGenerateSvg()
+} else if (fs.existsSync('./pubspec.yaml')) {
   //  Dart Project
   runDartDept()
 } else if (isSwiftProject(arg.input)) {
@@ -182,8 +163,8 @@ if (fs.existsSync('./pubspec.yaml')) {
 
 const totalNodes = glad.graph.getAllNodes().length
 const totalEdges = glad.graph.edges.length
-const orphaNodes = glad.graph.getOrphanNodes()
-const orphanCount = orphaNodes.length
+const orphanNodes = glad.graph.getOrphanNodes()
+const orphanCount = orphanNodes.length
 const upDependencyCount = glad.graph.getUpDependenciesCount()
 const circularCount = glad.graph.getCircularDependenciesCount()
 
@@ -193,7 +174,7 @@ if (arg.orphans) {
     console.info('No orphan nodes found.')
   } else {
     console.info(`Found ${orphanCount} orphan node(s):`)
-    orphaNodes.forEach(node => {
+    orphanNodes.forEach(node => {
       console.info(`  - ${node.name}`)
     })
   }
@@ -222,6 +203,33 @@ if (!arg.silent) {
 
 if (circularCount > 0) {
   process.exit(100)
+}
+
+/**
+ * Helper to detect swift project
+ * @param {string} input
+ * @returns {boolean}
+ */
+function isSwiftProject (input) {
+  const dir = input || '.'
+  if (!fs.existsSync(dir)) return false
+
+  // If input is a file, check extension
+  const stat = fs.statSync(dir)
+  if (stat.isFile()) {
+    return dir.endsWith('.swift')
+  }
+
+  // If dir, check for Package.swift or .xcodeproj or .swift files
+  try {
+    if (fs.existsSync(path.join(dir, 'Package.swift'))) return true
+    const files = fs.readdirSync(dir)
+    if (files.some(f => f.endsWith('.xcodeproj'))) return true
+    if (files.some(f => f.endsWith('.swift'))) return true
+  } catch (e) {
+    return false
+  }
+  return false
 }
 
 /**

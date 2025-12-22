@@ -2,6 +2,10 @@
 
 All notable changes to this project will be documented in this file.
 
+## [1.3.4]  2025-12-22
+
+    - Support `.dot` file input
+
 ## [1.3.3]  2025-12-19
 
     - Make orange and red edges wider using CSS classes (.lineOrange and .lineRed) for better visibility

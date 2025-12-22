@@ -340,3 +340,156 @@ class MyClass {}
     assert(!result.includes('"He said'))
   })
 })
+
+describe('DOT File Support', function () {
+  const glad = new GLAD({ silent: true, output: './test.dot.svg' })
+
+  it('parses basic DOT format with edges', function () {
+    const dotContent = `
+digraph G {
+  A -> B;
+  B -> C;
+  A -> C;
+}
+`
+    const result = glad.parseDotContent(dotContent)
+    assert.deepStrictEqual(result.nodes.sort(), ['A', 'B', 'C'])
+    assert.deepStrictEqual(result.edges, [
+      { source: 'A', target: 'B' },
+      { source: 'B', target: 'C' },
+      { source: 'A', target: 'C' }
+    ])
+  })
+
+  it('parses DOT format with standalone nodes', function () {
+    const dotContent = `
+digraph G {
+  A -> B;
+  C;
+  D -> E;
+}
+`
+    const result = glad.parseDotContent(dotContent)
+    assert.deepStrictEqual(result.nodes.sort(), ['A', 'B', 'C', 'D', 'E'])
+    assert.deepStrictEqual(result.edges, [
+      { source: 'A', target: 'B' },
+      { source: 'D', target: 'E' }
+    ])
+  })
+
+  it('handles comments in DOT format', function () {
+    const dotContent = `
+// This is a comment
+digraph G {
+  # Another comment
+  A -> B;
+  // Inline comment
+  C;
+}
+`
+    const result = glad.parseDotContent(dotContent)
+    assert.deepStrictEqual(result.nodes.sort(), ['A', 'B', 'C'])
+    assert.deepStrictEqual(result.edges, [
+      { source: 'A', target: 'B' }
+    ])
+  })
+
+  it('loads graph from DOT content', function () {
+    const dotContent = `
+digraph G {
+  A -> B;
+  B -> C;
+  D;
+}
+`
+    // Parse and load the DOT content manually to avoid SVG generation
+    const parsed = glad.parseDotContent(dotContent)
+    glad.graph = new Graph() // Reset graph
+
+    // Create nodes
+    parsed.nodes.forEach(nodeName => {
+      glad.graph.rootNode.upsert(nodeName).setAsLeaf(nodeName)
+    })
+
+    // Create edges
+    parsed.edges.forEach(edge => {
+      glad.graph.upsertFileLinkByText(edge.source, edge.target)
+    })
+
+    glad.graph.prepareEdges()
+
+    // Check that nodes were created
+    const allNodes = glad.graph.getAllNodes()
+    const nodeNames = allNodes.map(node => node.name).filter(name => name).sort()
+    assert.deepStrictEqual(nodeNames, ['A', 'B', 'C', 'D'])
+
+    // Check that edges were created
+    assert.strictEqual(glad.graph.edges.length, 2) // A->B, B->C
+
+    // Check orphan detection
+    const orphanNodes = glad.graph.getOrphanNodes()
+    const orphanNames = orphanNodes.map(node => node.name)
+    assert(orphanNames.includes('D'), 'D should be orphan (no edges)')
+    assert.strictEqual(orphanNodes.length, 1, 'Should have exactly 1 orphan node')
+  })
+
+  it('handles empty DOT graph', function () {
+    const dotContent = `
+digraph G {
+}
+`
+    const result = glad.parseDotContent(dotContent)
+    assert.deepStrictEqual(result.nodes, [])
+    assert.deepStrictEqual(result.edges, [])
+  })
+
+  it('throws error for invalid DOT format', function () {
+    const dotContent = `
+invalid format here
+`
+    assert.throws(() => glad.parseDotContent(dotContent), /Invalid DOT format/)
+  })
+
+  it('applies exclude patterns to DOT files', function () {
+    const dotContent = `
+digraph G {
+  "/lib/main.dart" [label="main"];
+  "/lib/utils/helper.dart" [label="helper"];
+  "/lib/test/utils/test_helper.dart" [label="test_helper"];
+  "/lib/main.dart" -> "/lib/utils/helper.dart";
+  "/lib/test/utils/test_helper.dart" -> "/lib/utils/helper.dart";
+}
+`
+    // Create GLAD instance with exclude pattern
+    const gladWithExclude = new GLAD({
+      silent: true,
+      output: './test.dot.svg',
+      exclude: ['**/test/**']
+    })
+
+    gladWithExclude.loadGraphFromDot(dotContent)
+
+    // Check that test files were excluded
+    const allNodes = gladWithExclude.graph.getAllNodes()
+    const nodeNames = allNodes.map(node => node.name).filter(name => name).sort()
+
+    // Should only include non-test files
+    assert.deepStrictEqual(nodeNames, ['/lib/main.dart', '/lib/utils/helper.dart'])
+
+    // Should only have one edge (test_helper -> helper was excluded)
+    assert.strictEqual(gladWithExclude.graph.edges.length, 1)
+    assert.strictEqual(gladWithExclude.graph.edges[0].source.name, '/lib/main.dart')
+    assert.strictEqual(gladWithExclude.graph.edges[0].target.name, '/lib/utils/helper.dart')
+  })
+
+  // Clean up test file
+  after(function () {
+    try {
+      if (fs.existsSync('./test.dot.svg')) {
+        fs.unlinkSync('./test.dot.svg')
+      }
+    } catch (err) {
+      // Ignore cleanup errors
+    }
+  })
+})
