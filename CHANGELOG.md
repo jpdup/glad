@@ -2,6 +2,10 @@
 
 All notable changes to this project will be documented in this file.
 
+## [1.3.3]  2025-12-19
+
+    - Make orange and red edges wider using CSS classes (.lineOrange and .lineRed) for better visibility
+  
 ## [1.3.2]  2025-12-13
 
     - Fix --exclude parameter for Swift projects

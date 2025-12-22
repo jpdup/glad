@@ -44,11 +44,32 @@
     }
     .line {
       fill : none;
+      stroke: #377E22;
       stroke-width: 3;
       opacity: 0.5;
     }
     .line:hover {
       stroke-width: 6;
+      opacity: 1;
+    }
+    .lineOrange {
+      fill : none;
+      stroke: #F09235;
+      stroke-width: 8;
+      opacity: 0.5;
+    }
+    .lineOrange:hover {
+      stroke-width: 13;
+      opacity: 1;
+    }
+    .lineRed {
+      fill : none;
+      stroke: #EB4132;
+      stroke-width: 8;
+      opacity: 0.5;
+    }
+    .lineRed:hover {
+      stroke-width: 13;
       opacity: 1;
     }
 </style>
@@ -123,10 +144,10 @@
     <rect x="4" y="189" width="292" height="72" rx="8" ry="8" class="nodeFile"/>
   </g>
   <g id='Edges'>
-    <line class="line" x1="580" y1="95" x2="320" y2="205" stroke="#377E22" filter='url(#outlineBlack)'/>
-    <line class="line" x1="880" y1="95" x2="620" y2="205" stroke="#377E22" filter='url(#outlineBlack)'/>
-    <line class="line" x1="280" y1="95" x2="20" y2="205" stroke="#EB4132" filter='url(#outlineBlack)'/>
-    <line class="line" x1="280" y1="245" x2="20" y2="55" stroke="#EB4132" filter='url(#outlineBlack)'/>
+    <line x1="580" y1="95" x2="320" y2="205" class="line" filter='url(#outlineBlack)'/>
+    <line x1="880" y1="95" x2="620" y2="205" class="line" filter='url(#outlineBlack)'/>
+    <line x1="280" y1="95" x2="20" y2="205" class="lineRed" filter='url(#outlineBlack)'/>
+    <line x1="280" y1="245" x2="20" y2="55" class="lineRed" filter='url(#outlineBlack)'/>
   </g>
   <g id='Counters_Barn2'>
     <g>

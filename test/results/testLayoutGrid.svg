@@ -44,11 +44,32 @@
     }
     .line {
       fill : none;
+      stroke: #377E22;
       stroke-width: 3;
       opacity: 0.5;
     }
     .line:hover {
       stroke-width: 6;
+      opacity: 1;
+    }
+    .lineOrange {
+      fill : none;
+      stroke: #F09235;
+      stroke-width: 8;
+      opacity: 0.5;
+    }
+    .lineOrange:hover {
+      stroke-width: 13;
+      opacity: 1;
+    }
+    .lineRed {
+      fill : none;
+      stroke: #EB4132;
+      stroke-width: 8;
+      opacity: 0.5;
+    }
+    .lineRed:hover {
+      stroke-width: 13;
       opacity: 1;
     }
 </style>
@@ -112,22 +133,22 @@
     <rect x="304" y="164" width="292" height="72" rx="8" ry="8" class="nodeFile"/>
   </g>
   <g id='Edges'>
-    <path class="line" d="M280 60 C 290 120,10 120, 20 180" fill="none" stroke="#377E22">
+    <path d="M280 60 C 290 120,10 120, 20 180" fill="none" class="line">
       <title>Barn2
 ⬇
 Chickens</title>
     </path>
-    <path class="line" d="M580 60 C 590 120,310 120, 320 180" fill="none" stroke="#377E22">
+    <path d="M580 60 C 590 120,310 120, 320 180" fill="none" class="line">
       <title>PersonA
 ⬇
 PersonB</title>
     </path>
-    <path class="line" d="M280 140 C 290 120,310 120, 320 100" fill="none" stroke="#EB4132">
+    <path d="M280 140 C 290 120,310 120, 320 100" fill="none" class="lineRed">
       <title>Potato
 ⬇
 Yam</title>
     </path>
-    <path class="line" d="M580 140 C 590 120,10 120, 20 100" fill="none" stroke="#EB4132">
+    <path d="M580 140 C 590 120,10 120, 20 100" fill="none" class="lineRed">
       <title>Yam
 ⬇
 Potato</title>

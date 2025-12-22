@@ -44,11 +44,32 @@
     }
     .line {
       fill : none;
+      stroke: #377E22;
       stroke-width: 3;
       opacity: 0.5;
     }
     .line:hover {
       stroke-width: 6;
+      opacity: 1;
+    }
+    .lineOrange {
+      fill : none;
+      stroke: #F09235;
+      stroke-width: 8;
+      opacity: 0.5;
+    }
+    .lineOrange:hover {
+      stroke-width: 13;
+      opacity: 1;
+    }
+    .lineRed {
+      fill : none;
+      stroke: #EB4132;
+      stroke-width: 8;
+      opacity: 0.5;
+    }
+    .lineRed:hover {
+      stroke-width: 13;
       opacity: 1;
     }
 </style>
@@ -234,347 +255,347 @@
     </g>
   </g>
   <g id='Edges'>
-    <path class="line" d="M782.5 945 C 792.5 965,362.5 965, 372.5 985" fill="none" stroke="#377E22">
+    <path d="M782.5 945 C 792.5 965,362.5 965, 372.5 985" fill="none" class="line">
       <title>container.js
 ⬇
 constants.js</title>
     </path>
-    <path class="line" d="M782.5 945 C 792.5 965,662.5 965, 672.5 985" fill="none" stroke="#377E22">
+    <path d="M782.5 945 C 792.5 965,662.5 965, 672.5 985" fill="none" class="line">
       <title>container.js
 ⬇
 rectangle.js</title>
     </path>
-    <path class="line" d="M932.5 865 C 942.5 925,362.5 925, 372.5 985" fill="none" stroke="#377E22">
+    <path d="M932.5 865 C 942.5 925,362.5 925, 372.5 985" fill="none" class="line">
       <title>containers.js
 ⬇
 constants.js</title>
     </path>
-    <path class="line" d="M932.5 865 C 942.5 885,512.5 885, 522.5 905" fill="none" stroke="#377E22">
+    <path d="M932.5 865 C 942.5 885,512.5 885, 522.5 905" fill="none" class="line">
       <title>containers.js
 ⬇
 container.js</title>
     </path>
-    <path class="line" d="M632.5 865 C 642.5 885,512.5 885, 522.5 905" fill="none" stroke="#377E22">
+    <path d="M632.5 865 C 642.5 885,512.5 885, 522.5 905" fill="none" class="line">
       <title>edge.js
 ⬇
 container.js</title>
     </path>
-    <path class="line" d="M932.5 785 C 942.5 845,512.5 845, 522.5 905" fill="none" stroke="#377E22">
+    <path d="M932.5 785 C 942.5 845,512.5 845, 522.5 905" fill="none" class="line">
       <title>edges.js
 ⬇
 container.js</title>
     </path>
-    <path class="line" d="M932.5 785 C 942.5 805,362.5 805, 372.5 825" fill="none" stroke="#377E22">
+    <path d="M932.5 785 C 942.5 805,362.5 805, 372.5 825" fill="none" class="line">
       <title>edges.js
 ⬇
 edge.js</title>
     </path>
-    <path class="line" d="M782.5 360 C 802.5 672,352.5 673, 372.5 985" fill="none" stroke="#377E22">
+    <path d="M782.5 360 C 802.5 672,352.5 673, 372.5 985" fill="none" class="line">
       <title>glad.js
 ⬇
 constants.js</title>
     </path>
-    <path class="line" d="M782.5 360 C 800.5 632,504.5 633, 522.5 905" fill="none" stroke="#377E22">
+    <path d="M782.5 360 C 800.5 632,504.5 633, 522.5 905" fill="none" class="line">
       <title>glad.js
 ⬇
 container.js</title>
     </path>
-    <path class="line" d="M782.5 360 C 792.5 512,362.5 513, 372.5 665" fill="none" stroke="#377E22">
+    <path d="M782.5 360 C 792.5 512,362.5 513, 372.5 665" fill="none" class="line">
       <title>glad.js
 ⬇
 graph.js</title>
     </path>
-    <path class="line" d="M782.5 360 C 792.5 512,662.5 513, 672.5 665" fill="none" stroke="#377E22">
+    <path d="M782.5 360 C 792.5 512,662.5 513, 672.5 665" fill="none" class="line">
       <title>glad.js
 ⬇
 layers.js</title>
     </path>
-    <path class="line" d="M782.5 360 C 792.5 397,812.5 398, 822.5 435" fill="none" stroke="#377E22">
+    <path d="M782.5 360 C 792.5 397,812.5 398, 822.5 435" fill="none" class="line">
       <title>glad.js
 ⬇
 renderAsGrid.js</title>
     </path>
-    <path class="line" d="M782.5 360 C 792.5 397,212.5 398, 222.5 435" fill="none" stroke="#377E22">
+    <path d="M782.5 360 C 792.5 397,212.5 398, 222.5 435" fill="none" class="line">
       <title>glad.js
 ⬇
 renderAsLayers.js</title>
     </path>
-    <path class="line" d="M782.5 360 C 792.5 397,512.5 398, 522.5 435" fill="none" stroke="#377E22">
+    <path d="M782.5 360 C 792.5 397,512.5 398, 522.5 435" fill="none" class="line">
       <title>glad.js
 ⬇
 renderAsPoster.js</title>
     </path>
-    <path class="line" d="M782.5 360 C 792.5 437,512.5 438, 522.5 515" fill="none" stroke="#377E22">
+    <path d="M782.5 360 C 792.5 437,512.5 438, 522.5 515" fill="none" class="line">
       <title>glad.js
 ⬇
 renderBase.js</title>
     </path>
-    <path class="line" d="M782.5 360 C 810.5 787,494.5 788, 522.5 1215" fill="none" stroke="#377E22">
+    <path d="M782.5 360 C 810.5 787,494.5 788, 522.5 1215" fill="none" class="line">
       <title>glad.js
 ⬇
 strings.js</title>
     </path>
-    <path class="line" d="M632.5 705 C 642.5 805,512.5 805, 522.5 905" fill="none" stroke="#377E22">
+    <path d="M632.5 705 C 642.5 805,512.5 805, 522.5 905" fill="none" class="line">
       <title>graph.js
 ⬇
 container.js</title>
     </path>
-    <path class="line" d="M632.5 705 C 642.5 765,362.5 765, 372.5 825" fill="none" stroke="#377E22">
+    <path d="M632.5 705 C 642.5 765,362.5 765, 372.5 825" fill="none" class="line">
       <title>graph.js
 ⬇
 edge.js</title>
     </path>
-    <path class="line" d="M632.5 705 C 642.5 725,662.5 725, 672.5 745" fill="none" stroke="#377E22">
+    <path d="M632.5 705 C 642.5 725,662.5 725, 672.5 745" fill="none" class="line">
       <title>graph.js
 ⬇
 edges.js</title>
     </path>
-    <path class="line" d="M632.5 705 C 649.5 960,505.5 960, 522.5 1215" fill="none" stroke="#377E22">
+    <path d="M632.5 705 C 649.5 960,505.5 960, 522.5 1215" fill="none" class="line">
       <title>graph.js
 ⬇
 strings.js</title>
     </path>
-    <path class="line" d="M1250 130 C 1278 557,344.5 558, 372.5 985" fill="none" stroke="#377E22">
+    <path d="M1250 130 C 1278 557,344.5 558, 372.5 985" fill="none" class="line">
       <title>index.js
 ⬇
 constants.js</title>
     </path>
-    <path class="line" d="M1250 130 C 1260 225,512.5 225, 522.5 320" fill="none" stroke="#377E22">
+    <path d="M1250 130 C 1260 225,512.5 225, 522.5 320" fill="none" class="line">
       <title>index.js
 ⬇
 glad.js</title>
     </path>
-    <path class="line" d="M632.5 785 C 642.5 885,362.5 885, 372.5 985" fill="none" stroke="#377E22">
+    <path d="M632.5 785 C 642.5 885,362.5 885, 372.5 985" fill="none" class="line">
       <title>layer.js
 ⬇
 constants.js</title>
     </path>
-    <path class="line" d="M632.5 785 C 642.5 805,662.5 805, 672.5 825" fill="none" stroke="#377E22">
+    <path d="M632.5 785 C 642.5 805,662.5 805, 672.5 825" fill="none" class="line">
       <title>layer.js
 ⬇
 containers.js</title>
     </path>
-    <path class="line" d="M632.5 785 C 642.5 885,662.5 885, 672.5 985" fill="none" stroke="#377E22">
+    <path d="M632.5 785 C 642.5 885,662.5 885, 672.5 985" fill="none" class="line">
       <title>layer.js
 ⬇
 rectangle.js</title>
     </path>
-    <path class="line" d="M932.5 705 C 942.5 845,362.5 845, 372.5 985" fill="none" stroke="#377E22">
+    <path d="M932.5 705 C 942.5 845,362.5 845, 372.5 985" fill="none" class="line">
       <title>layers.js
 ⬇
 constants.js</title>
     </path>
-    <path class="line" d="M932.5 705 C 942.5 805,512.5 805, 522.5 905" fill="none" stroke="#377E22">
+    <path d="M932.5 705 C 942.5 805,512.5 805, 522.5 905" fill="none" class="line">
       <title>layers.js
 ⬇
 container.js</title>
     </path>
-    <path class="line" d="M932.5 705 C 942.5 725,362.5 725, 372.5 745" fill="none" stroke="#377E22">
+    <path d="M932.5 705 C 942.5 725,362.5 725, 372.5 745" fill="none" class="line">
       <title>layers.js
 ⬇
 layer.js</title>
     </path>
-    <path class="line" d="M1082.5 475 C 1099.5 730,355.5 730, 372.5 985" fill="none" stroke="#377E22">
+    <path d="M1082.5 475 C 1099.5 730,355.5 730, 372.5 985" fill="none" class="line">
       <title>renderAsGrid.js
 ⬇
 constants.js</title>
     </path>
-    <path class="line" d="M1082.5 475 C 1096.5 690,508.5 690, 522.5 905" fill="none" stroke="#377E22">
+    <path d="M1082.5 475 C 1096.5 690,508.5 690, 522.5 905" fill="none" class="line">
       <title>renderAsGrid.js
 ⬇
 container.js</title>
     </path>
-    <path class="line" d="M1082.5 475 C 1092.5 570,362.5 570, 372.5 665" fill="none" stroke="#377E22">
+    <path d="M1082.5 475 C 1092.5 570,362.5 570, 372.5 665" fill="none" class="line">
       <title>renderAsGrid.js
 ⬇
 graph.js</title>
     </path>
-    <path class="line" d="M1082.5 475 C 1092.5 495,512.5 495, 522.5 515" fill="none" stroke="#377E22">
+    <path d="M1082.5 475 C 1092.5 495,512.5 495, 522.5 515" fill="none" class="line">
       <title>renderAsGrid.js
 ⬇
 renderBase.js</title>
     </path>
-    <path class="line" d="M482.5 475 C 499.5 730,355.5 730, 372.5 985" fill="none" stroke="#377E22">
+    <path d="M482.5 475 C 499.5 730,355.5 730, 372.5 985" fill="none" class="line">
       <title>renderAsLayers.js
 ⬇
 constants.js</title>
     </path>
-    <path class="line" d="M482.5 475 C 496.5 690,508.5 690, 522.5 905" fill="none" stroke="#377E22">
+    <path d="M482.5 475 C 496.5 690,508.5 690, 522.5 905" fill="none" class="line">
       <title>renderAsLayers.js
 ⬇
 container.js</title>
     </path>
-    <path class="line" d="M482.5 475 C 492.5 570,362.5 570, 372.5 665" fill="none" stroke="#377E22">
+    <path d="M482.5 475 C 492.5 570,362.5 570, 372.5 665" fill="none" class="line">
       <title>renderAsLayers.js
 ⬇
 graph.js</title>
     </path>
-    <path class="line" d="M482.5 475 C 492.5 570,662.5 570, 672.5 665" fill="none" stroke="#377E22">
+    <path d="M482.5 475 C 492.5 570,662.5 570, 672.5 665" fill="none" class="line">
       <title>renderAsLayers.js
 ⬇
 layers.js</title>
     </path>
-    <path class="line" d="M482.5 475 C 492.5 495,512.5 495, 522.5 515" fill="none" stroke="#377E22">
+    <path d="M482.5 475 C 492.5 495,512.5 495, 522.5 515" fill="none" class="line">
       <title>renderAsLayers.js
 ⬇
 renderBase.js</title>
     </path>
-    <path class="line" d="M782.5 475 C 799.5 730,355.5 730, 372.5 985" fill="none" stroke="#377E22">
+    <path d="M782.5 475 C 799.5 730,355.5 730, 372.5 985" fill="none" class="line">
       <title>renderAsPoster.js
 ⬇
 constants.js</title>
     </path>
-    <path class="line" d="M782.5 475 C 796.5 690,508.5 690, 522.5 905" fill="none" stroke="#377E22">
+    <path d="M782.5 475 C 796.5 690,508.5 690, 522.5 905" fill="none" class="line">
       <title>renderAsPoster.js
 ⬇
 container.js</title>
     </path>
-    <path class="line" d="M782.5 475 C 792.5 570,362.5 570, 372.5 665" fill="none" stroke="#377E22">
+    <path d="M782.5 475 C 792.5 570,362.5 570, 372.5 665" fill="none" class="line">
       <title>renderAsPoster.js
 ⬇
 graph.js</title>
     </path>
-    <path class="line" d="M782.5 475 C 792.5 570,662.5 570, 672.5 665" fill="none" stroke="#377E22">
+    <path d="M782.5 475 C 792.5 570,662.5 570, 672.5 665" fill="none" class="line">
       <title>renderAsPoster.js
 ⬇
 layers.js</title>
     </path>
-    <path class="line" d="M782.5 475 C 792.5 495,512.5 495, 522.5 515" fill="none" stroke="#377E22">
+    <path d="M782.5 475 C 792.5 495,512.5 495, 522.5 515" fill="none" class="line">
       <title>renderAsPoster.js
 ⬇
 renderBase.js</title>
     </path>
-    <path class="line" d="M782.5 555 C 796.5 770,358.5 770, 372.5 985" fill="none" stroke="#377E22">
+    <path d="M782.5 555 C 796.5 770,358.5 770, 372.5 985" fill="none" class="line">
       <title>renderBase.js
 ⬇
 constants.js</title>
     </path>
-    <path class="line" d="M782.5 555 C 793.5 730,511.5 730, 522.5 905" fill="none" stroke="#377E22">
+    <path d="M782.5 555 C 793.5 730,511.5 730, 522.5 905" fill="none" class="line">
       <title>renderBase.js
 ⬇
 container.js</title>
     </path>
-    <path class="line" d="M782.5 555 C 792.5 690,362.5 690, 372.5 825" fill="none" stroke="#377E22">
+    <path d="M782.5 555 C 792.5 690,362.5 690, 372.5 825" fill="none" class="line">
       <title>renderBase.js
 ⬇
 edge.js</title>
     </path>
-    <path class="line" d="M782.5 555 C 792.5 650,662.5 650, 672.5 745" fill="none" stroke="#377E22">
+    <path d="M782.5 555 C 792.5 650,662.5 650, 672.5 745" fill="none" class="line">
       <title>renderBase.js
 ⬇
 edges.js</title>
     </path>
-    <path class="line" d="M782.5 555 C 792.5 610,362.5 610, 372.5 665" fill="none" stroke="#377E22">
+    <path d="M782.5 555 C 792.5 610,362.5 610, 372.5 665" fill="none" class="line">
       <title>renderBase.js
 ⬇
 graph.js</title>
     </path>
-    <path class="line" d="M782.5 555 C 792.5 650,362.5 650, 372.5 745" fill="none" stroke="#377E22">
+    <path d="M782.5 555 C 792.5 650,362.5 650, 372.5 745" fill="none" class="line">
       <title>renderBase.js
 ⬇
 layer.js</title>
     </path>
-    <path class="line" d="M782.5 555 C 792.5 610,662.5 610, 672.5 665" fill="none" stroke="#377E22">
+    <path d="M782.5 555 C 792.5 610,662.5 610, 672.5 665" fill="none" class="line">
       <title>renderBase.js
 ⬇
 layers.js</title>
     </path>
-    <path class="line" d="M782.5 555 C 796.5 770,658.5 770, 672.5 985" fill="none" stroke="#377E22">
+    <path d="M782.5 555 C 796.5 770,658.5 770, 672.5 985" fill="none" class="line">
       <title>renderBase.js
 ⬇
 rectangle.js</title>
     </path>
-    <path class="line" d="M782.5 555 C 804.5 885,500.5 885, 522.5 1215" fill="none" stroke="#377E22">
+    <path d="M782.5 555 C 804.5 885,500.5 885, 522.5 1215" fill="none" class="line">
       <title>renderBase.js
 ⬇
 strings.js</title>
     </path>
-    <path class="line" d="M782.5 555 C 801.5 845,503.5 845, 522.5 1135" fill="none" stroke="#377E22">
+    <path d="M782.5 555 C 801.5 845,503.5 845, 522.5 1135" fill="none" class="line">
       <title>renderBase.js
 ⬇
 svg.js</title>
     </path>
-    <path class="line" d="M782.5 1175 C 792.5 1195,512.5 1195, 522.5 1215" fill="none" stroke="#377E22">
+    <path d="M782.5 1175 C 792.5 1195,512.5 1195, 522.5 1215" fill="none" class="line">
       <title>svg.js
 ⬇
 strings.js</title>
     </path>
-    <path class="line" d="M315 210 C 340 597,347.5 598, 372.5 985" fill="none" stroke="#377E22">
+    <path d="M315 210 C 340 597,347.5 598, 372.5 985" fill="none" class="line">
       <title>test_js.js
 ⬇
 constants.js</title>
     </path>
-    <path class="line" d="M315 210 C 325 265,512.5 265, 522.5 320" fill="none" stroke="#377E22">
+    <path d="M315 210 C 325 265,512.5 265, 522.5 320" fill="none" class="line">
       <title>test_js.js
 ⬇
 glad.js</title>
     </path>
-    <path class="line" d="M615 210 C 640 597,347.5 598, 372.5 985" fill="none" stroke="#377E22">
+    <path d="M615 210 C 640 597,347.5 598, 372.5 985" fill="none" class="line">
       <title>test_swift.js
 ⬇
 constants.js</title>
     </path>
-    <path class="line" d="M615 210 C 625 265,512.5 265, 522.5 320" fill="none" stroke="#377E22">
+    <path d="M615 210 C 625 265,512.5 265, 522.5 320" fill="none" class="line">
       <title>test_swift.js
 ⬇
 glad.js</title>
     </path>
-    <path class="line" d="M915 210 C 940 597,347.5 598, 372.5 985" fill="none" stroke="#377E22">
+    <path d="M915 210 C 940 597,347.5 598, 372.5 985" fill="none" class="line">
       <title>test_ts.js
 ⬇
 constants.js</title>
     </path>
-    <path class="line" d="M915 210 C 925 265,512.5 265, 522.5 320" fill="none" stroke="#377E22">
+    <path d="M915 210 C 925 265,512.5 265, 522.5 320" fill="none" class="line">
       <title>test_ts.js
 ⬇
 glad.js</title>
     </path>
-    <path class="line" d="M615 130 C 643 557,344.5 558, 372.5 985" fill="none" stroke="#377E22">
+    <path d="M615 130 C 643 557,344.5 558, 372.5 985" fill="none" class="line">
       <title>test.js
 ⬇
 constants.js</title>
     </path>
-    <path class="line" d="M615 130 C 640 517,497.5 518, 522.5 905" fill="none" stroke="#377E22">
+    <path d="M615 130 C 640 517,497.5 518, 522.5 905" fill="none" class="line">
       <title>test.js
 ⬇
 container.js</title>
     </path>
-    <path class="line" d="M615 130 C 625 225,512.5 225, 522.5 320" fill="none" stroke="#377E22">
+    <path d="M615 130 C 625 225,512.5 225, 522.5 320" fill="none" class="line">
       <title>test.js
 ⬇
 glad.js</title>
     </path>
-    <path class="line" d="M615 130 C 632 397,355.5 398, 372.5 665" fill="none" stroke="#377E22">
+    <path d="M615 130 C 632 397,355.5 398, 372.5 665" fill="none" class="line">
       <title>test.js
 ⬇
 graph.js</title>
     </path>
-    <path class="line" d="M615 130 C 625 282,812.5 283, 822.5 435" fill="none" stroke="#377E22">
+    <path d="M615 130 C 625 282,812.5 283, 822.5 435" fill="none" class="line">
       <title>test.js
 ⬇
 renderAsGrid.js</title>
     </path>
-    <path class="line" d="M615 130 C 625 282,212.5 283, 222.5 435" fill="none" stroke="#377E22">
+    <path d="M615 130 C 625 282,212.5 283, 222.5 435" fill="none" class="line">
       <title>test.js
 ⬇
 renderAsLayers.js</title>
     </path>
-    <path class="line" d="M615 130 C 625 282,512.5 283, 522.5 435" fill="none" stroke="#377E22">
+    <path d="M615 130 C 625 282,512.5 283, 522.5 435" fill="none" class="line">
       <title>test.js
 ⬇
 renderAsPoster.js</title>
     </path>
-    <path class="line" d="M615 130 C 625 150,45 150, 55 170" fill="none" stroke="#377E22">
+    <path d="M615 130 C 625 150,45 150, 55 170" fill="none" class="line">
       <title>test.js
 ⬇
 test_js.js</title>
     </path>
-    <path class="line" d="M615 130 C 625 150,345 150, 355 170" fill="none" stroke="#377E22">
+    <path d="M615 130 C 625 150,345 150, 355 170" fill="none" class="line">
       <title>test.js
 ⬇
 test_swift.js</title>
     </path>
-    <path class="line" d="M615 130 C 625 150,645 150, 655 170" fill="none" stroke="#377E22">
+    <path d="M615 130 C 625 150,645 150, 655 170" fill="none" class="line">
       <title>test.js
 ⬇
 test_ts.js</title>

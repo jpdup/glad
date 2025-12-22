@@ -44,11 +44,32 @@
     }
     .line {
       fill : none;
+      stroke: #377E22;
       stroke-width: 3;
       opacity: 0.5;
     }
     .line:hover {
       stroke-width: 6;
+      opacity: 1;
+    }
+    .lineOrange {
+      fill : none;
+      stroke: #F09235;
+      stroke-width: 8;
+      opacity: 0.5;
+    }
+    .lineOrange:hover {
+      stroke-width: 13;
+      opacity: 1;
+    }
+    .lineRed {
+      fill : none;
+      stroke: #EB4132;
+      stroke-width: 8;
+      opacity: 0.5;
+    }
+    .lineRed:hover {
+      stroke-width: 13;
       opacity: 1;
     }
 </style>
@@ -130,29 +151,29 @@
     </g>
   </g>
   <g id='Edges'>
-    <path class="line" d="M650 130 C 660 260,45 260, 55 390" fill="none" stroke="#377E22" filter='url(#shadow)'>
+    <path d="M650 130 C 660 260,45 260, 55 390" fill="none" class="line" filter='url(#shadow)'>
       <title>Barn2
 ⬇
 Chickens</title>
     </path>
-    <path class="line" d="M985 130 C 995 150,715 150, 725 170" fill="none" stroke="#377E22" filter='url(#shadow)'>
+    <path d="M985 130 C 995 150,715 150, 725 170" fill="none" class="line" filter='url(#shadow)'>
       <title>PersonA
 ⬇
 PersonB</title>
     </path>
-    <path class="line" d="M332.5 165 C 342.5 185,62.5 185, 72.5 205" fill="none" stroke="#EB4132" filter='url(#shadow)'>
+    <path d="M332.5 165 C 342.5 185,62.5 185, 72.5 205" fill="none" class="lineRed" filter='url(#shadow)'>
       <title>Potato
 ⬇
 Yam</title>
     </path>
-    <path class="line" d="M332.5 245 C 342.5 185,62.5 185, 72.5 125" fill="none" stroke="#EB4132" filter='url(#shadow)'>
+    <path d="M332.5 245 C 342.5 185,62.5 185, 72.5 125" fill="none" class="lineRed" filter='url(#shadow)'>
       <title>Yam
 ⬇
 Potato</title>
     </path>
   </g>
   <g id='Edges_Containers'>
-    <path class="line" d="M372.5 315 C 382.5 335,305 335, 315 355" fill="none" stroke="#377E22" filter='url(#shadow)'>
+    <path d="M372.5 315 C 382.5 335,305 335, 315 355" fill="none" class="line" filter='url(#shadow)'>
     </path>
     <g>
       <circle cx="372.5" cy="315" r="10" fill="green"/>

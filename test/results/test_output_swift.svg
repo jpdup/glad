@@ -44,11 +44,32 @@
     }
     .line {
       fill : none;
+      stroke: #377E22;
       stroke-width: 3;
       opacity: 0.5;
     }
     .line:hover {
       stroke-width: 6;
+      opacity: 1;
+    }
+    .lineOrange {
+      fill : none;
+      stroke: #F09235;
+      stroke-width: 8;
+      opacity: 0.5;
+    }
+    .lineOrange:hover {
+      stroke-width: 13;
+      opacity: 1;
+    }
+    .lineRed {
+      fill : none;
+      stroke: #EB4132;
+      stroke-width: 8;
+      opacity: 0.5;
+    }
+    .lineRed:hover {
+      stroke-width: 13;
       opacity: 1;
     }
 </style>
@@ -109,22 +130,22 @@
     </g>
   </g>
   <g id='Edges'>
-    <path class="line" d="M447.5 175 C 457.5 195,177.5 195, 187.5 215" fill="none" stroke="#377E22">
+    <path d="M447.5 175 C 457.5 195,177.5 195, 187.5 215" fill="none" class="line">
       <title>UserProfileCard.swift
 ⬇
 UserModel.swift</title>
     </path>
-    <path class="line" d="M297.5 95 C 307.5 155,177.5 155, 187.5 215" fill="none" stroke="#377E22">
+    <path d="M297.5 95 C 307.5 155,177.5 155, 187.5 215" fill="none" class="line">
       <title>UserService.swift
 ⬇
 UserModel.swift</title>
     </path>
-    <path class="line" d="M597.5 95 C 607.5 155,177.5 155, 187.5 215" fill="none" stroke="#377E22">
+    <path d="M597.5 95 C 607.5 155,177.5 155, 187.5 215" fill="none" class="line">
       <title>UserView.swift
 ⬇
 UserModel.swift</title>
     </path>
-    <path class="line" d="M597.5 95 C 607.5 115,177.5 115, 187.5 135" fill="none" stroke="#377E22">
+    <path d="M597.5 95 C 607.5 115,177.5 115, 187.5 135" fill="none" class="line">
       <title>UserView.swift
 ⬇
 UserProfileCard.swift</title>
