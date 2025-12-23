@@ -1,25 +1,25 @@
 /* eslint-env mocha */
 
-import { GLAD } from '../lib/glad.js'
-import { Constants } from '../lib/models/constants.js'
 import fs from 'fs'
 import path from 'path'
+
+import { GLAD } from '../lib/glad.js'
+import { Constants } from '../lib/models/constants.js'
 
 describe('Swift Dependency Detection', function () {
   it('should detect Swift type dependencies correctly', function () {
     const glad = new GLAD({
-      silent: true,
-      input: '.',
-      output: 'test/results/test_output_swift.svg',
-      exclude: '**/*test*.js',
       edges: Constants.EDGES_BOTH,
-      lineEffect: 'flat'
+      exclude: '**/*test*.js',
+      input: '.',
+      lineEffect: 'flat',
+      output: 'test/results/test_output_swift.svg',
+      silent: true
     })
 
     // Create test Swift files
     const swiftFiles = [
       {
-        name: 'UserModel.swift',
         content: `
 import Foundation
 
@@ -34,10 +34,10 @@ public class UserManager {
         return UserModel(id: "1", name: "Test", email: "test@example.com")
     }
 }
-`
+`,
+        name: 'UserModel.swift'
       },
       {
-        name: 'UserView.swift',
         content: `
 import SwiftUI
 
@@ -51,10 +51,10 @@ public struct UserView: View {
         }
     }
 }
-`
+`,
+        name: 'UserView.swift'
       },
       {
-        name: 'UserProfileCard.swift',
         content: `
 import SwiftUI
 
@@ -68,10 +68,10 @@ public struct UserProfileCard: View {
         }
     }
 }
-`
+`,
+        name: 'UserProfileCard.swift'
       },
       {
-        name: 'UserService.swift',
         content: `
 import Foundation
 
@@ -82,7 +82,8 @@ public class UserService {
         return await manager.createUser()
     }
 }
-`
+`,
+        name: 'UserService.swift'
       }
     ]
 

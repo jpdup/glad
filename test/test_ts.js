@@ -1,25 +1,25 @@
 /* eslint-env mocha */
 
-import { GLAD } from '../lib/glad.js'
-import { Constants } from '../lib/models/constants.js'
 import fs from 'fs'
 import path from 'path'
+
+import { GLAD } from '../lib/glad.js'
+import { Constants } from '../lib/models/constants.js'
 
 describe('TypeScript Dependency Detection', function () {
   it('should detect TypeScript import/export and type dependencies correctly', function () {
     const glad = new GLAD({
-      silent: true,
-      input: '.',
-      output: 'test/results/test_output_ts.svg',
-      exclude: '**/*test*.js',
       edges: Constants.EDGES_BOTH,
-      lineEffect: 'flat'
+      exclude: '**/*test*.js',
+      input: '.',
+      lineEffect: 'flat',
+      output: 'test/results/test_output_ts.svg',
+      silent: true
     })
 
     // Create test TypeScript files
     const tsFiles = [
       {
-        name: 'types.ts',
         content: `
 export interface User {
   id: string
@@ -35,10 +35,10 @@ export interface ApiResponse<T> {
   success: boolean
   message?: string
 }
-`
+`,
+        name: 'types.ts'
       },
       {
-        name: 'userService.ts',
         content: `
 import { User, UserRole, ApiResponse } from './types.js'
 
@@ -68,10 +68,10 @@ export class UserService {
     return this.users.find(user => user.id === id)
   }
 }
-`
+`,
+        name: 'userService.ts'
       },
       {
-        name: 'UserComponent.tsx',
         content: `
 import React, { useState, useEffect } from 'react'
 import { User, UserRole } from './types.js'
@@ -133,10 +133,10 @@ const UserList: React.FC<UserListProps> = ({ users }) => {
     </ul>
   )
 }
-`
+`,
+        name: 'UserComponent.tsx'
       },
       {
-        name: 'App.tsx',
         content: `
 import React from 'react'
 import { UserComponent } from './UserComponent.js'
@@ -163,7 +163,8 @@ const App: React.FC = () => {
 }
 
 export default App
-`
+`,
+        name: 'App.tsx'
       }
     ]
 

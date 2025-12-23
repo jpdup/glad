@@ -2,6 +2,7 @@ import assert from 'assert'
 import fs from 'fs'
 
 import { describe, it } from 'mocha'
+
 import { GLAD } from '../lib/glad.js'
 
 describe('DOT File Support', function () {
@@ -18,10 +19,10 @@ digraph G {
 `
     // Create GLAD instance with exclude pattern
     const gladWithExclude = new GLAD({
-      silent: true,
+      exclude: ['**/test/**'],
 
       output: './test/results/test_output_dot.svg',
-      exclude: ['**/test/**']
+      silent: true
     })
 
     // Write test DOT file

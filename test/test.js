@@ -2,14 +2,14 @@ import assert from 'assert'
 import fs from 'fs'
 
 import { describe, it } from 'mocha'
+
+import { GLAD } from '../lib/glad.js'
 import { Constants } from '../lib/models/constants.js'
-import { Graph } from '../lib/models/graph.js'
 import { Container } from '../lib/models/container.js'
+import { Graph } from '../lib/models/graph.js'
 import { RenderAsGrid } from '../lib/render/renderAsGrid.js'
 import { RenderAsLayers } from '../lib/render/renderAsLayers.js'
 import { RenderAsPoster } from '../lib/render/renderAsPoster.js'
-import { GLAD } from '../lib/glad.js'
-
 // Import additional test files
 import '../test/test_js.js'
 import '../test/test_ts.js'

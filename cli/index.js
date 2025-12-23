@@ -1,130 +1,45 @@
 #!/usr/bin/env node
 
-import chalk from 'chalk'
-import { Constants } from '../lib/models/constants.js'
 import { createRequire } from 'module'
-import { GLAD } from '../lib/glad.js'
-import { hideBin } from 'yargs/helpers'
+
+import chalk from 'chalk'
 import yargs from 'yargs'
+import { hideBin } from 'yargs/helpers'
+
+import { GLAD } from '../lib/glad.js'
+import { Constants } from '../lib/models/constants.js'
 
 const require = createRequire(import.meta.url)
 const fs = require('fs')
-const packageJson = require('../package.json')
 const path = require('path')
 
+const packageJson = require('../package.json')
+
 /**
- * Configures and parses command line arguments
- * @returns {object} Parsed arguments
+ * Helper to detect swift project
+ * @param {string} input
+ * @returns {boolean}
  */
-function setupArguments () {
-  // noinspection JSUnresolvedFunction,JSUnresolvedVariable
-  return yargs(hideBin(process.argv))
-    .usage('Usage: glad < path | file.dot > [options]  "Generates an SVG layer diagram file based on your source code dependencies or DOT graph files"')
-    .example('glad . --view layers -l --edges -hide', '">>> Produce a diagram with no edges, each layers are numbered."')
-    .example('glad myGraph.dot --view layers -l', '">>> Generate layers diagram from DOT graph file."')
-    .help('h')
-    .alias('h', 'help')
-    .option('align', {
-      description: 'Set the horizontal position of the nodes',
-      type: 'string',
-      choices: [Constants.ALIGN_LEFT, Constants.ALIGN_CENTER, Constants.ALIGN_RIGHT],
-      default: Constants.ALIGN_CENTER
-    })
-    .option('debug', {
-      description: 'For tech support',
-      type: 'boolean',
-      default: false
-    })
-    .option('details', {
-      alias: 'd',
-      description: 'Show additional values for each folders',
-      type: 'boolean',
-      default: false
-    })
-    .option('dev', {
-      description: 'Show Dev dependencies',
-      type: 'boolean',
-      default: false
-    })
-    .option(Constants.EDGES, {
-      description: 'Type of rendering for all edges',
-      type: 'string',
-      choices: ['files', 'folders'],
-      default: 'files'
-    })
-    .option('exclude', {
-      alias: 'e',
-      description: 'File glob patterns to exclude from the analysis, eg: "**/*.test.js" "**/AppLogger*"',
-      type: 'array'
-    })
-    .option('externals', {
-      alias: 'ex',
-      description: 'Show external dependencies',
-      type: 'boolean',
-      default: false
-    })
-    .option('input', {
-      alias: 'i',
-      description: 'File path to scan',
-      type: 'string'
-    })
-    .option('json', {
-      description: 'Output the graph to file called glad.json',
-      type: 'boolean',
-      default: false
-    })
-    .option('layers', {
-      alias: 'l',
-      description: 'Display the layers background and numbers',
-      type: 'boolean',
-      default: false
-    })
-    .option('lineEffect', {
-      alias: 'le',
-      description: 'Special effect on the lines',
-      type: 'string',
-      choice: ['flat', 'outline', 'shadow'],
-      default: 'flat'
-    })
-    .option(Constants.LINES, {
-      description: 'Type of rendering for all edges',
-      type: 'string',
-      choices: [Constants.LINES_CURVE, Constants.LINES_STRAIT, Constants.LINES_ELBOW, Constants.LINES_ANGLE, Constants.LINES_HIDE, Constants.LINES_WARNINGS],
-      default: Constants.LINES_CURVE
-    })
-    .option('listFiles', {
-      description: 'List all input files found',
-      type: 'boolean',
-      default: false
-    })
-    .option('orphans', {
-      description: 'List all orphan nodes (nodes with no edges)',
-      type: 'boolean',
-      default: false
-    })
-    .option('output', {
-      alias: 'o',
-      description: 'File path to output svg',
-      type: 'string',
-      default: './glad.svg'
-    })
-    .option('silent', {
-      alias: 's',
-      description: 'No output except for errors',
-      type: 'boolean',
-      default: false
-    })
-    .option('view', {
-      description: 'Type of diagram to generate',
-      type: 'string',
-      choices: ['poster', 'layers', 'grid'],
-      default: 'poster'
-    })
-    // .version(true, 'Show version number', packageJson.version)
-    .alias('v', 'version')
-    .wrap(null)
-    .epilog('for more information visit https://github.com/amzn/generate-layer-architecture-diagram')
-    .argv
+function isSwiftProject (input) {
+  const dir = input || '.'
+  if (!fs.existsSync(dir)) return false
+
+  // If input is a file, check extension
+  const stat = fs.statSync(dir)
+  if (stat.isFile()) {
+    return dir.endsWith('.swift')
+  }
+
+  // If dir, check for Package.swift or .xcodeproj or .swift files
+  try {
+    if (fs.existsSync(path.join(dir, 'Package.swift'))) return true
+    const files = fs.readdirSync(dir)
+    if (files.some(f => f.endsWith('.xcodeproj'))) return true
+    if (files.some(f => f.endsWith('.swift'))) return true
+  } catch (e) {
+    return false
+  }
+  return false
 }
 
 /**
@@ -217,30 +132,118 @@ async function main () {
 }
 
 /**
- * Helper to detect swift project
- * @param {string} input
- * @returns {boolean}
+ * Configures and parses command line arguments
+ * @returns {object} Parsed arguments
  */
-function isSwiftProject (input) {
-  const dir = input || '.'
-  if (!fs.existsSync(dir)) return false
-
-  // If input is a file, check extension
-  const stat = fs.statSync(dir)
-  if (stat.isFile()) {
-    return dir.endsWith('.swift')
-  }
-
-  // If dir, check for Package.swift or .xcodeproj or .swift files
-  try {
-    if (fs.existsSync(path.join(dir, 'Package.swift'))) return true
-    const files = fs.readdirSync(dir)
-    if (files.some(f => f.endsWith('.xcodeproj'))) return true
-    if (files.some(f => f.endsWith('.swift'))) return true
-  } catch (e) {
-    return false
-  }
-  return false
+function setupArguments () {
+  // noinspection JSUnresolvedFunction,JSUnresolvedVariable
+  return yargs(hideBin(process.argv))
+    .usage('Usage: glad < path | file.dot > [options]  "Generates an SVG layer diagram file based on your source code dependencies or DOT graph files"')
+    .example('glad . --view layers -l --edges -hide', '">>> Produce a diagram with no edges, each layers are numbered."')
+    .example('glad myGraph.dot --view layers -l', '">>> Generate layers diagram from DOT graph file."')
+    .help('h')
+    .alias('h', 'help')
+    .option('align', {
+      choices: [Constants.ALIGN_LEFT, Constants.ALIGN_CENTER, Constants.ALIGN_RIGHT],
+      default: Constants.ALIGN_CENTER,
+      description: 'Set the horizontal position of the nodes',
+      type: 'string'
+    })
+    .option('debug', {
+      default: false,
+      description: 'For tech support',
+      type: 'boolean'
+    })
+    .option('details', {
+      alias: 'd',
+      default: false,
+      description: 'Show additional values for each folders',
+      type: 'boolean'
+    })
+    .option('dev', {
+      default: false,
+      description: 'Show Dev dependencies',
+      type: 'boolean'
+    })
+    .option(Constants.EDGES, {
+      choices: ['files', 'folders'],
+      default: 'files',
+      description: 'Type of rendering for all edges',
+      type: 'string'
+    })
+    .option('exclude', {
+      alias: 'e',
+      description: 'File glob patterns to exclude from the analysis, eg: "**/*.test.js" "**/AppLogger*"',
+      type: 'array'
+    })
+    .option('externals', {
+      alias: 'ex',
+      default: false,
+      description: 'Show external dependencies',
+      type: 'boolean'
+    })
+    .option('input', {
+      alias: 'i',
+      description: 'File path to scan',
+      type: 'string'
+    })
+    .option('json', {
+      default: false,
+      description: 'Output the graph to file called glad.json',
+      type: 'boolean'
+    })
+    .option('layers', {
+      alias: 'l',
+      default: false,
+      description: 'Display the layers background and numbers',
+      type: 'boolean'
+    })
+    .option('lineEffect', {
+      alias: 'le',
+      choice: ['flat', 'outline', 'shadow'],
+      default: 'flat',
+      description: 'Special effect on the lines',
+      type: 'string'
+    })
+    .option(Constants.LINES, {
+      choices: [Constants.LINES_CURVE, Constants.LINES_STRAIT, Constants.LINES_ELBOW, Constants.LINES_ANGLE, Constants.LINES_HIDE, Constants.LINES_WARNINGS],
+      default: Constants.LINES_CURVE,
+      description: 'Type of rendering for all edges',
+      type: 'string'
+    })
+    .option('listFiles', {
+      default: false,
+      description: 'List all input files found',
+      type: 'boolean'
+    })
+    .option('orphans', {
+      default: false,
+      description: 'List all orphan nodes (nodes with no edges)',
+      type: 'boolean'
+    })
+    .option('output', {
+      alias: 'o',
+      default: './glad.svg',
+      description: 'File path to output svg',
+      type: 'string'
+    })
+    .option('silent', {
+      alias: 's',
+      default: false,
+      description: 'No output except for errors',
+      type: 'boolean'
+    })
+    .option('view', {
+      choices: ['poster', 'layers', 'grid'],
+      default: 'poster',
+      description: 'Type of diagram to generate',
+      type: 'string'
+    })
+    // .version(true, 'Show version number', packageJson.version)
+    .alias('v', 'version')
+    .wrap(null)
+    .epilog('for more information visit https://github.com/amzn/generate-layer-architecture-diagram')
+    .argv
 }
 
 /**

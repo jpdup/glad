@@ -1,25 +1,25 @@
 /* eslint-env mocha */
 
-import { GLAD } from '../lib/glad.js'
-import { Constants } from '../lib/models/constants.js'
 import fs from 'fs'
 import path from 'path'
+
+import { GLAD } from '../lib/glad.js'
+import { Constants } from '../lib/models/constants.js'
 
 describe('JavaScript Dependency Detection', function () {
   it('should detect JavaScript import/export dependencies correctly', function () {
     const glad = new GLAD({
-      silent: true,
-      input: '.',
-      output: 'test/results/test_output_js.svg',
-      exclude: '**/*test*.js',
       edges: Constants.EDGES_BOTH,
-      lineEffect: 'flat'
+      exclude: '**/*test*.js',
+      input: '.',
+      lineEffect: 'flat',
+      output: 'test/results/test_output_js.svg',
+      silent: true
     })
 
     // Create test JavaScript files
     const jsFiles = [
       {
-        name: 'utils.js',
         content: `
 export function formatName(firstName, lastName) {
   return \`\${firstName} \${lastName}\`.trim()
@@ -33,10 +33,10 @@ export class DataService {
     return response.json()
   }
 }
-`
+`,
+        name: 'utils.js'
       },
       {
-        name: 'UserComponent.js',
         content: `
 import React from 'react'
 import { formatName, DataService } from './utils.js'
@@ -67,10 +67,10 @@ function UserList({ users }) {
     </ul>
   )
 }
-`
+`,
+        name: 'UserComponent.js'
       },
       {
-        name: 'App.js',
         content: `
 import React from 'react'
 import UserComponent from './UserComponent.js'
@@ -92,7 +92,8 @@ function App() {
 }
 
 export default App
-`
+`,
+        name: 'App.js'
       }
     ]
 
