@@ -111,7 +111,7 @@ export default App
 
     try {
       // Process JavaScript files
-      glad.scanSourceFilesBuildGraphAndGenerateSvg()
+      glad.graphSvgFromJavascript()
 
       // Verify dependencies were created correctly
       const dependencies = glad.allFileImports

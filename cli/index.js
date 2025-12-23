@@ -2,207 +2,218 @@
 
 import chalk from 'chalk'
 import { Constants } from '../lib/models/constants.js'
-import { GLAD } from '../lib/glad.js'
-// Define "require"
 import { createRequire } from 'module'
-import yargs from 'yargs'
+import { GLAD } from '../lib/glad.js'
 import { hideBin } from 'yargs/helpers'
+import yargs from 'yargs'
 
 const require = createRequire(import.meta.url)
 const fs = require('fs')
-const { exec } = require('node:child_process')
+const packageJson = require('../package.json')
 const path = require('path')
-const packageJSon = require('../package.json')
 
-// noinspection JSUnresolvedFunction,JSUnresolvedVariable
-const arg = yargs(hideBin(process.argv))
-  .usage('Usage: glad < path | file.dot > [options]  "Generates an SVG layer diagram file based on your source code dependencies or DOT graph files"')
-  .example('glad . --view layers -l --edges -hide', '">>> Produce a diagram with no edges, each layers are numbered."')
-  .example('glad myGraph.dot --view layers -l', '">>> Generate layers diagram from DOT graph file."')
-  .help('h')
-  .alias('h', 'help')
-  .option('input', {
-    alias: 'i',
-    description: 'File path to scan',
-    type: 'string'
-  })
-  .option('output', {
-    alias: 'o',
-    description: 'File path to output svg',
-    type: 'string',
-    default: './glad.svg'
-  })
-  .option('exclude', {
-    alias: 'e',
-    description: 'File glob patterns to exclude from the analysis, eg: "**/*.test.js" "**/AppLogger*"',
-    type: 'array'
-  })
-  .option('view', {
-    description: 'Type of diagram to generate',
-    type: 'string',
-    choices: ['poster', 'layers', 'grid'],
-    default: 'poster'
-  })
-  .option('align', {
-    description: 'Set the horizontal position of the nodes',
-    type: 'string',
-    choices: [Constants.ALIGN_LEFT, Constants.ALIGN_CENTER, Constants.ALIGN_RIGHT],
-    default: Constants.ALIGN_CENTER
-  })
-  .option(Constants.EDGES, {
-    description: 'Type of rendering for all edges',
-    type: 'string',
-    choices: ['files', 'folders'],
-    default: 'files'
-  })
-  .option(Constants.LINES, {
-    description: 'Type of rendering for all edges',
-    type: 'string',
-    choices: [Constants.LINES_CURVE, Constants.LINES_STRAIT, Constants.LINES_ELBOW, Constants.LINES_ANGLE, Constants.LINES_HIDE, Constants.LINES_WARNINGS],
-    default: Constants.LINES_CURVE
-  })
-  .option('lineEffect', {
-    alias: 'le',
-    description: 'Special effect on the lines',
-    type: 'string',
-    choice: ['flat', 'outline', 'shadow'],
-    default: 'flat'
-  })
-  .option('layers', {
-    alias: 'l',
-    description: 'Display the layers background and numbers',
-    type: 'boolean',
-    default: false
-  })
-  .option('details', {
-    alias: 'd',
-    description: 'Show additional values for each folders',
-    type: 'boolean',
-    default: false
-  })
-  .option('externals', {
-    alias: 'ex',
-    description: 'Show external dependencies',
-    type: 'boolean',
-    default: false
-  })
-  .option('dev', {
-    description: 'Show Dev dependencies',
-    type: 'boolean',
-    default: false
-  })
-  .option('json', {
-    description: 'Output the graph to file called glad.json',
-    type: 'boolean',
-    default: false
-  })
-  .option('debug', {
-    description: 'For tech support',
-    type: 'boolean',
-    default: false
-  })
-  .option('listFiles', {
-    description: 'List all input files found',
-    type: 'boolean',
-    default: false
-  })
-  .option('orphans', {
-    description: 'List all orphan nodes (nodes with no edges)',
-    type: 'boolean',
-    default: false
-  })
-  .option('silent', {
-    alias: 's',
-    description: 'No output except for errors',
-    type: 'boolean',
-    default: false
-  })
-  // .version(true, 'Show version number', packageJSon.version)
-  .alias('v', 'version')
-  .wrap(null)
-  .epilog('for more information visit https://github.com/amzn/generate-layer-architecture-diagram')
-  .argv
-
-arg.useFullLayerWidth = false // Not yet ready for public use
-
-if (!arg.input) {
-  arg.input = arg._[0]
-}
-
-if (arg.debug) {
-  console.log(arg)
-}
-
-if (!arg.silent) {
-  showTitle()
-}
-
-if (!arg.silent) {
-  console.time('Completed')
-}
-
-const glad = new GLAD(arg)
-
-//
-// Determine the input context
-//
-
-if (arg.input && arg.input.endsWith('.dot')) {
-  // DOT file input
-  glad.scanDotFileBuildGraphAndGenerateSvg()
-} else if (fs.existsSync('./pubspec.yaml')) {
-  //  Dart Project
-  runDartDept()
-} else if (isSwiftProject(arg.input)) {
-  // Swift Project
-  glad.scanSwiftSourceFilesBuildGraphAndGenerateSvg()
-} else {
-  // NodeJS project
-  glad.scanSourceFilesBuildGraphAndGenerateSvg()
-}
-
-const totalNodes = glad.graph.getAllNodes().length
-const totalEdges = glad.graph.edges.length
-const orphanNodes = glad.graph.getOrphanNodes()
-const orphanCount = orphanNodes.length
-const upDependencyCount = glad.graph.getUpDependenciesCount()
-const circularCount = glad.graph.getCircularDependenciesCount()
-
-// Handle --orphans flag
-if (arg.orphans) {
-  if (orphanCount === 0) {
-    console.info('No orphan nodes found.')
-  } else {
-    console.info(`Found ${orphanCount} orphan node(s):`)
-    orphanNodes.forEach(node => {
-      console.info(`  - ${node.name}`)
+/**
+ * Configures and parses command line arguments
+ * @returns {object} Parsed arguments
+ */
+function setupArguments () {
+  // noinspection JSUnresolvedFunction,JSUnresolvedVariable
+  return yargs(hideBin(process.argv))
+    .usage('Usage: glad < path | file.dot > [options]  "Generates an SVG layer diagram file based on your source code dependencies or DOT graph files"')
+    .example('glad . --view layers -l --edges -hide', '">>> Produce a diagram with no edges, each layers are numbered."')
+    .example('glad myGraph.dot --view layers -l', '">>> Generate layers diagram from DOT graph file."')
+    .help('h')
+    .alias('h', 'help')
+    .option('align', {
+      description: 'Set the horizontal position of the nodes',
+      type: 'string',
+      choices: [Constants.ALIGN_LEFT, Constants.ALIGN_CENTER, Constants.ALIGN_RIGHT],
+      default: Constants.ALIGN_CENTER
     })
-  }
+    .option('debug', {
+      description: 'For tech support',
+      type: 'boolean',
+      default: false
+    })
+    .option('details', {
+      alias: 'd',
+      description: 'Show additional values for each folders',
+      type: 'boolean',
+      default: false
+    })
+    .option('dev', {
+      description: 'Show Dev dependencies',
+      type: 'boolean',
+      default: false
+    })
+    .option(Constants.EDGES, {
+      description: 'Type of rendering for all edges',
+      type: 'string',
+      choices: ['files', 'folders'],
+      default: 'files'
+    })
+    .option('exclude', {
+      alias: 'e',
+      description: 'File glob patterns to exclude from the analysis, eg: "**/*.test.js" "**/AppLogger*"',
+      type: 'array'
+    })
+    .option('externals', {
+      alias: 'ex',
+      description: 'Show external dependencies',
+      type: 'boolean',
+      default: false
+    })
+    .option('input', {
+      alias: 'i',
+      description: 'File path to scan',
+      type: 'string'
+    })
+    .option('json', {
+      description: 'Output the graph to file called glad.json',
+      type: 'boolean',
+      default: false
+    })
+    .option('layers', {
+      alias: 'l',
+      description: 'Display the layers background and numbers',
+      type: 'boolean',
+      default: false
+    })
+    .option('lineEffect', {
+      alias: 'le',
+      description: 'Special effect on the lines',
+      type: 'string',
+      choice: ['flat', 'outline', 'shadow'],
+      default: 'flat'
+    })
+    .option(Constants.LINES, {
+      description: 'Type of rendering for all edges',
+      type: 'string',
+      choices: [Constants.LINES_CURVE, Constants.LINES_STRAIT, Constants.LINES_ELBOW, Constants.LINES_ANGLE, Constants.LINES_HIDE, Constants.LINES_WARNINGS],
+      default: Constants.LINES_CURVE
+    })
+    .option('listFiles', {
+      description: 'List all input files found',
+      type: 'boolean',
+      default: false
+    })
+    .option('orphans', {
+      description: 'List all orphan nodes (nodes with no edges)',
+      type: 'boolean',
+      default: false
+    })
+    .option('output', {
+      alias: 'o',
+      description: 'File path to output svg',
+      type: 'string',
+      default: './glad.svg'
+    })
+    .option('silent', {
+      alias: 's',
+      description: 'No output except for errors',
+      type: 'boolean',
+      default: false
+    })
+    .option('view', {
+      description: 'Type of diagram to generate',
+      type: 'string',
+      choices: ['poster', 'layers', 'grid'],
+      default: 'poster'
+    })
+    // .version(true, 'Show version number', packageJson.version)
+    .alias('v', 'version')
+    .wrap(null)
+    .epilog('for more information visit https://github.com/amzn/generate-layer-architecture-diagram')
+    .argv
 }
 
-if (!arg.silent) {
-  console.info(`Nodes: ${totalNodes}, Edges: ${totalEdges}`)
+/**
+ *
+ */
+async function main () {
+  const arg = setupArguments()
 
-  // Warning of orphan nodes
-  if (orphanCount > 0) {
-    console.error(chalk.yellow(`Orphan nodes: ${orphanCount}`))
+  arg.useFullLayerWidth = false // Not yet ready for public use
+
+  if (!arg.input) {
+    arg.input = arg._[0]
   }
 
-  // Warning of upward nodes
-
-  if (upDependencyCount > 0) {
-    console.error(chalk.yellow(`Upward dependencies: ${upDependencyCount}`))
+  if (arg.debug) {
+    console.log(arg)
   }
 
-  // Error of circular edges
+  if (!arg.silent) {
+    showTitle()
+  }
+
+  if (!arg.silent) {
+    console.time('Completed')
+  }
+
+  const glad = new GLAD(arg)
+
+  //
+  // Determine the input context
+  //
+
+  if (arg.input && arg.input.endsWith('.dot')) {
+    // DOT file input
+    glad.graphSvgFromDotFile()
+  } else if (fs.existsSync('./pubspec.yaml')) {
+    //  Dart Project
+    await glad.graphSvgFromFlutterDart()
+  } else if (isSwiftProject(arg.input)) {
+    // Swift Project
+    glad.graphSvgFromSwift()
+  } else {
+    // NodeJS project
+    glad.graphSvgFromJavascript()
+  }
+
+  const totalNodes = glad.graph.getAllNodes().length
+  const totalEdges = glad.graph.edges.length
+  const orphanNodes = glad.graph.getOrphanNodes()
+  const orphanCount = orphanNodes.length
+  const upDependencyCount = glad.graph.getUpDependenciesCount()
+  const circularCount = glad.graph.getCircularDependenciesCount()
+
+  // Handle --orphans flag
+  if (arg.orphans) {
+    if (orphanCount === 0) {
+      console.info('No orphan nodes found.')
+    } else {
+      console.info(`Found ${orphanCount} orphan node(s):`)
+      orphanNodes.forEach(node => {
+        console.info(`  - ${node.name}`)
+      })
+    }
+  }
+
+  if (!arg.silent) {
+    console.info(`Nodes: ${totalNodes}, Edges: ${totalEdges}`)
+
+    // Warning of orphan nodes
+    if (orphanCount > 0) {
+      console.error(chalk.yellow(`Orphan nodes: ${orphanCount}`))
+    }
+
+    // Warning of upward nodes
+
+    if (upDependencyCount > 0) {
+      console.error(chalk.yellow(`Upward dependencies: ${upDependencyCount}`))
+    }
+
+    // Error of circular edges
+    if (circularCount > 0) {
+      console.error(chalk.red(`Circular dependencies: ${circularCount}`))
+    }
+    console.timeEnd('Completed')
+  }
+
   if (circularCount > 0) {
-    console.error(chalk.red(`Circular dependencies: ${circularCount}`))
+    process.exit(100)
   }
-  console.timeEnd('Completed')
-}
-
-if (circularCount > 0) {
-  process.exit(100)
 }
 
 /**
@@ -236,29 +247,7 @@ function isSwiftProject (input) {
  * Display the title of the application
  */
 function showTitle () {
-  console.info(chalk.blueBright('GLAD') + '   ' + chalk.blue(packageJSon.version || ''))
+  console.info(chalk.blueBright('GLAD') + '   ' + chalk.blue(packageJson.version || ''))
 }
 
-// run the `ls` command using exec
-/**
- *
- */
-function runDartDept () {
-  exec('dart pub deps --json', (err, output) => {
-    // once the command has completed, the callback function is called
-    if (err) {
-      // log and return if we encounter an error
-      console.error('could not execute command: ', err)
-      return
-    }
-    // Read the input dependency structure
-    const blob = JSON.parse(output)
-    glad.loadGraphFromFlutterDependencies(blob)
-  })
-
-  // // when a child process exits, it fires
-  // // the "close" event
-  // command.on('close', (code) => {
-  //   console.log('process has exited')
-  // })
-}
+main()
