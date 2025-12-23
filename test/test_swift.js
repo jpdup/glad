@@ -102,7 +102,7 @@ public class UserService {
 
     try {
       // Process Swift files and generate output
-      glad.processSwiftFiles(filePaths)
+      glad.swiftParser.processSwiftFiles(filePaths)
       glad.processTheGraph()
 
       // Verify dependencies were created correctly

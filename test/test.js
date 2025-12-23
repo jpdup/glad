@@ -224,7 +224,7 @@ class MyClass {}
 
 struct MyStruct {}
 `
-    const result = glad.removeCommentsAndStrings(input)
+    const result = glad.swiftParser.removeCommentsAndStrings(input)
     assert.strictEqual(result, expected)
   })
 
@@ -238,7 +238,7 @@ class MyClass {}
     const expected = `
 class MyClass {}
 `
-    const result = glad.removeCommentsAndStrings(input)
+    const result = glad.swiftParser.removeCommentsAndStrings(input)
     assert.strictEqual(result, expected)
   })
 
@@ -248,7 +248,7 @@ let message = "Hello World"
 class MyClass {}
 let name = 'John'
 `
-    const result = glad.removeCommentsAndStrings(input)
+    const result = glad.swiftParser.removeCommentsAndStrings(input)
     // Verify that string literals are removed but code structure is preserved
     assert(result.includes('let message ='))
     assert(result.includes('class MyClass'))
@@ -268,7 +268,7 @@ class RealClass { // inline comment
     var property: String
 }
 `
-    const result = glad.removeCommentsAndStrings(input)
+    const result = glad.swiftParser.removeCommentsAndStrings(input)
     // Verify that comments and strings are removed and real class/struct definitions are preserved
     assert(result.includes('class RealClass {'))
     assert(result.includes('var property: String'))
@@ -289,7 +289,7 @@ class RealClass {}
 struct RealStruct {}
 let data = "test"
 `
-    const result = glad.removeCommentsAndStrings(input)
+    const result = glad.swiftParser.removeCommentsAndStrings(input)
     // Verify that real definitions are preserved and fake ones are ignored
     assert(result.includes('class RealClass'))
     assert(result.includes('struct RealStruct'))
@@ -305,7 +305,7 @@ let data = "test"
 still in outer */
 class MyClass {}
 `
-    const result = glad.removeCommentsAndStrings(input)
+    const result = glad.swiftParser.removeCommentsAndStrings(input)
     // Verify that the comment is properly handled and code is preserved
     assert(result.includes('class MyClass'))
     assert(!result.includes('/* Outer comment'))
@@ -321,7 +321,7 @@ class MyClass {}
 
 struct MyStruct {}
 `
-    const result = glad.removeCommentsAndStrings(input)
+    const result = glad.swiftParser.removeCommentsAndStrings(input)
     // Verify that comments and strings are removed but structure is preserved
     assert(result.includes('let config ='))
     assert(result.includes('class MyClass'))
@@ -335,7 +335,7 @@ struct MyStruct {}
 let message = "He said \\"Hello\\""
 class MyClass {}
 `
-    const result = glad.removeCommentsAndStrings(input)
+    const result = glad.swiftParser.removeCommentsAndStrings(input)
     // Verify that the string is processed (at least the assignment remains)
     assert(result.includes('let message ='))
     assert(!result.includes('"He said'))
