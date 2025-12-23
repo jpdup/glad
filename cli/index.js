@@ -8,39 +8,12 @@ import { hideBin } from 'yargs/helpers'
 
 import { GLAD } from '../lib/glad.js'
 import { Constants } from '../lib/models/constants.js'
+import { SwiftParser } from '../lib/parsers/parseSwift.js'
 
 const require = createRequire(import.meta.url)
 const fs = require('fs')
-const path = require('path')
 
 const packageJson = require('../package.json')
-
-/**
- * Helper to detect swift project
- * @param {string} input
- * @returns {boolean}
- */
-function isSwiftProject (input) {
-  const dir = input || '.'
-  if (!fs.existsSync(dir)) return false
-
-  // If input is a file, check extension
-  const stat = fs.statSync(dir)
-  if (stat.isFile()) {
-    return dir.endsWith('.swift')
-  }
-
-  // If dir, check for Package.swift or .xcodeproj or .swift files
-  try {
-    if (fs.existsSync(path.join(dir, 'Package.swift'))) return true
-    const files = fs.readdirSync(dir)
-    if (files.some(f => f.endsWith('.xcodeproj'))) return true
-    if (files.some(f => f.endsWith('.swift'))) return true
-  } catch (e) {
-    return false
-  }
-  return false
-}
 
 /**
  *
@@ -74,17 +47,19 @@ async function main () {
 
   if (arg.input && arg.input.endsWith('.dot')) {
     // DOT file input
-    glad.graphSvgFromDotFile()
+    glad.parseDot.graphSvgFromDotFile()
   } else if (fs.existsSync('./pubspec.yaml')) {
     //  Dart Project
-    await glad.graphSvgFromFlutterDart()
-  } else if (isSwiftProject(arg.input)) {
+    await glad.flutterDartParser.graphSvgFromFlutterDart()
+  } else if (SwiftParser.isSwiftProject(arg.input)) {
     // Swift Project
-    glad.graphSvgFromSwift()
+    glad.parseDot.graphSvgFromDotFile()
   } else {
     // NodeJS project
-    glad.graphSvgFromJavascript()
+    glad.jsTsParser.generateDependenciesFromSourceFiles()
   }
+
+  glad.context.processTheGraph()
 
   const totalNodes = glad.graph.getAllNodes().length
   const totalEdges = glad.graph.edges.length

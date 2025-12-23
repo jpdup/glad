@@ -34,7 +34,7 @@ digraph G {
       gladWithExclude.options.input = dotFilePath
 
       // Process the DOT file (this should generate SVG with exclude patterns applied)
-      gladWithExclude.graphSvgFromDotFile()
+      gladWithExclude.parseDot.graphSvgFromDotFile()
 
       // Check that SVG file was created
       assert(fs.existsSync('./test/results/test_output_dot.svg'), 'SVG file should be generated')

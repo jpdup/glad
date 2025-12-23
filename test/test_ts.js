@@ -183,7 +183,7 @@ export default App
 
     try {
       // Process TypeScript files
-      glad.graphSvgFromJavascript()
+      glad.jsTsParser.generateDependenciesFromSourceFiles()
 
       // Verify dependencies were created correctly
       const dependencies = glad.allFileImports
