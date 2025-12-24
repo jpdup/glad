@@ -2,6 +2,14 @@
 
 All notable changes to this project will be documented in this file.
 
+## [1.3.6]  2025-12-24
+
+    - Fix DOT parser exclude pattern matching to properly handle glob patterns with path separators
+
+## [1.3.5]  2025-12-24
+
+    - Fix DOT file parser edge creation when exclude patterns are used
+
 ## [1.3.4]  2025-12-22
 
     - Support `.dot` file input
