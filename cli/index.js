@@ -8,7 +8,7 @@ import { hideBin } from 'yargs/helpers'
 
 import { GLAD } from '../lib/glad.js'
 import { Constants } from '../lib/models/constants.js'
-import { SwiftParser } from '../lib/parsers/parseSwift.js'
+import { SwiftParser } from '../lib/parsers/parserSwift.js'
 
 const require = createRequire(import.meta.url)
 const fs = require('fs')
@@ -53,7 +53,7 @@ async function main () {
     await glad.flutterDartParser.graphSvgFromFlutterDart()
   } else if (SwiftParser.isSwiftProject(arg.input)) {
     // Swift Project
-    glad.parseDot.graphSvgFromDotFile()
+    glad.swiftParser.generateDependenciesFromSwiftFiles()
   } else {
     // NodeJS project
     glad.jsTsParser.generateDependenciesFromSourceFiles()

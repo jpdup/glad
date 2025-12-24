@@ -5,6 +5,7 @@ All notable changes to this project will be documented in this file.
 ## [1.3.6]  2025-12-24
 
     - Fix DOT parser exclude pattern matching to properly handle glob patterns with path separators
+    - DRY refactoring: Eliminate code duplication in parsers by extracting common file processing logic into `processFilesCommon()` method in BaseParser
 
 ## [1.3.5]  2025-12-24
 

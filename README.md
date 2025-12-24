@@ -6,7 +6,8 @@ Automatically generate **layer diagram** view of your Javascript/Typescript/Dart
 
 View and Keep your project source files layer dependencies clean. Avoid circular reference or referencing an upper layer from a lower layer.  
 
-### Project type supported 
+### Project type supported
+
 * NodeJS - source files of type **JS & TS**, simply launch the ```glad``` and open the resulting ```glad.svg``` file.
 * **NEW** - Now supports **Flutter/Dart** package dependencies
 
@@ -27,9 +28,9 @@ View and Keep your project source files layer dependencies clean. Avoid circular
 
 ## Features
 
-- Optional grouping of layers by folders.
-- Rendering views as Posters, Layers, or Grid.
-- Render with or without edges (arrow lines).
+* Optional grouping of layers by folders.
+* Rendering views as Posters, Layers, or Grid.
+* Render with or without edges (arrow lines).
 
 ## Installation
 
