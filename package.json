@@ -1,5 +1,5 @@
 {
-  "name": "@amazon/glad",
+  "name": "@jpdup/glad",
   "version": "1.3.6",
   "description": "Generate a Layer Diagram view of your source layers",
   "main": "cli/index.js",
@@ -12,7 +12,7 @@
   "homepage": "https://github.com/amzn/generate-layer-architecture-diagram",
   "repository": {
     "type": "git",
-    "url": "https://github.com/amzn/generate-layer-architecture-diagram"
+    "url": "git+https://github.com/amzn/generate-layer-architecture-diagram.git"
   },
   "keywords": [
     "amazon",
