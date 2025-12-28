@@ -12,6 +12,7 @@ All notable changes to this project will be documented in this file.
     - Better separation of concerns with console output handling
     - Updated JSDoc documentation for svgDoc property to reflect array type instead of string
     - Minor documentation improvements
+    - Fix bug: It was parsing Dart/Flutter twice
 
 ## [1.3.6]  2025-12-24
 
