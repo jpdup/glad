@@ -2,7 +2,7 @@
 
 All notable changes to this project will be documented in this file.
 
-## [1.3.7]  2025-12-28
+## [1.3.8]  2025-12-28
 
     - Centralized console output system with ConsoleOutput class for consistent output control
     - Improved SVG generation performance by replacing string concatenation with array-based building
@@ -13,6 +13,10 @@ All notable changes to this project will be documented in this file.
     - Updated JSDoc documentation for svgDoc property to reflect array type instead of string
     - Minor documentation improvements
     - Fix bug: It was parsing Dart/Flutter twice
+
+## [1.3.7]  2025-12-26
+
+    - Update packages.
 
 ## [1.3.6]  2025-12-24
 
