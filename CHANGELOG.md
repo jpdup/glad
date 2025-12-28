@@ -2,6 +2,10 @@
 
 All notable changes to this project will be documented in this file.
 
+## [1.3.9]  2025-12-28
+
+    - Update repository URLs to point to correct GitHub repository (jpdup/glad)
+
 ## [1.3.8]  2025-12-28
 
     - Centralized console output system with ConsoleOutput class for consistent output control

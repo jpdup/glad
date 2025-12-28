@@ -1,6 +1,6 @@
 {
   "name": "@jpdup/glad",
-  "version": "1.3.8",
+  "version": "1.3.9",
   "description": "Generate a Layer Diagram view of your source layers",
   "main": "cli/index.js",
   "author": "jp@vteam.com",
@@ -9,10 +9,10 @@
     "glad": "cli/index.js"
   },
   "type": "module",
-  "homepage": "https://github.com/amzn/generate-layer-architecture-diagram",
+  "homepage": "https://github.com/jpdup/glad",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/amzn/generate-layer-architecture-diagram.git"
+    "url": "git+https://github.com/jpdup/glad.git"
   },
   "keywords": [
     "amazon",
