@@ -2,13 +2,13 @@
 
 import { createRequire } from 'module'
 
-import chalk from 'chalk'
 import yargs from 'yargs'
 import { hideBin } from 'yargs/helpers'
 
 import { GLAD } from '../lib/glad.js'
 import { Constants } from '../lib/models/constants.js'
 import { SwiftParser } from '../lib/parsers/parserSwift.js'
+import { ConsoleOutput } from '../lib/util/console.js'
 
 const require = createRequire(import.meta.url)
 const fs = require('fs')
@@ -16,7 +16,7 @@ const fs = require('fs')
 const packageJson = require('../package.json')
 
 /**
- *
+ * Main entry point
  */
 async function main () {
   const arg = setupArguments()
@@ -27,24 +27,26 @@ async function main () {
     arg.input = arg._[0]
   }
 
-  if (arg.debug) {
-    console.log(arg)
-  }
-
-  if (!arg.silent) {
-    showTitle()
-  }
-
-  if (!arg.silent) {
-    console.time('Completed')
-  }
+  // Create console output helper
 
   const glad = new GLAD(arg)
+
+  // Set consoleOutput on context for cleaner access
+  glad.context.consoleOutput = new ConsoleOutput({ debug: arg.debug, silent: arg.silent })
+
+  if (arg.debug) {
+    glad.context.consoleOutput.debug(arg)
+  }
+
+  // Title and Version
+  glad.context.consoleOutput.title('GLAD ' + packageJson.version)
+
+  // Start to measure the time spent running the app
+  glad.context.consoleOutput.time('Completed')
 
   //
   // Determine the input context
   //
-
   if (arg.input && arg.input.endsWith('.dot')) {
     // DOT file input
     glad.parseDot.graphSvgFromDotFile()
@@ -71,35 +73,33 @@ async function main () {
   // Handle --orphans flag
   if (arg.orphans) {
     if (orphanCount === 0) {
-      console.info('No orphan nodes found.')
+      glad.context.consoleOutput.info('No orphan nodes found.')
     } else {
-      console.info(`Found ${orphanCount} orphan node(s):`)
+      glad.context.consoleOutput.info(`Found ${orphanCount} orphan node(s):`)
       orphanNodes.forEach(node => {
-        console.info(`  - ${node.name}`)
+        glad.context.consoleOutput.info(`  - ${node.name}`)
       })
     }
   }
 
-  if (!arg.silent) {
-    console.info(`Nodes: ${totalNodes}, Edges: ${totalEdges}`)
+  glad.context.consoleOutput.info(`Nodes: ${totalNodes}, Edges: ${totalEdges}`)
 
-    // Warning of orphan nodes
-    if (orphanCount > 0) {
-      console.error(chalk.yellow(`Orphan nodes: ${orphanCount}`))
-    }
-
-    // Warning of upward nodes
-
-    if (upDependencyCount > 0) {
-      console.error(chalk.yellow(`Upward dependencies: ${upDependencyCount}`))
-    }
-
-    // Error of circular edges
-    if (circularCount > 0) {
-      console.error(chalk.red(`Circular dependencies: ${circularCount}`))
-    }
-    console.timeEnd('Completed')
+  // Warning of orphan nodes
+  if (orphanCount > 0) {
+    glad.context.consoleOutput.warning(`Orphan nodes: ${orphanCount}`)
   }
+
+  // Warning of upward nodes
+  if (upDependencyCount > 0) {
+    glad.context.consoleOutput.warning(`Upward dependencies: ${upDependencyCount}`)
+  }
+
+  // Error of circular edges
+  if (circularCount > 0) {
+    glad.context.consoleOutput.error(`Circular dependencies: ${circularCount}`)
+  }
+
+  glad.context.consoleOutput.timeEnd('Completed')
 
   if (circularCount > 0) {
     process.exit(100)
@@ -219,13 +219,6 @@ function setupArguments () {
     .wrap(null)
     .epilog('for more information visit https://github.com/amzn/generate-layer-architecture-diagram')
     .argv
-}
-
-/**
- * Display the title of the application
- */
-function showTitle () {
-  console.info(chalk.blueBright('GLAD') + '   ' + chalk.blue(packageJson.version || ''))
 }
 
 main()

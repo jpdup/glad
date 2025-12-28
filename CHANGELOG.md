@@ -2,6 +2,17 @@
 
 All notable changes to this project will be documented in this file.
 
+## [1.3.7]  2025-12-28
+
+    - Centralized console output system with ConsoleOutput class for consistent output control
+    - Improved SVG generation performance by replacing string concatenation with array-based building
+    - Added comprehensive silent mode (--silent flag) support that suppresses all informational output
+    - Refactored all console usage throughout the codebase to use the centralized output system
+    - Enhanced console output with colored messages (success, warnings, errors) using chalk
+    - Better separation of concerns with console output handling
+    - Updated JSDoc documentation for svgDoc property to reflect array type instead of string
+    - Minor documentation improvements
+
 ## [1.3.6]  2025-12-24
 
     - Fix DOT parser exclude pattern matching to properly handle glob patterns with path separators
