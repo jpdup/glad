@@ -42,7 +42,7 @@ async function main () {
   glad.context.consoleOutput.title('GLAD ' + packageJson.version)
 
   // Start to measure the time spent running the app
-  glad.context.consoleOutput.time('Completed')
+  glad.context.consoleOutput.timeStart('Completed')
 
   //
   // Determine the input context
@@ -73,16 +73,16 @@ async function main () {
   // Handle --orphans flag
   if (arg.orphans) {
     if (orphanCount === 0) {
-      glad.context.consoleOutput.info('No orphan nodes found.')
+      glad.context.consoleOutput.log('No orphan nodes found.')
     } else {
-      glad.context.consoleOutput.info(`Found ${orphanCount} orphan node(s):`)
+      glad.context.consoleOutput.warning(`Found ${orphanCount} orphan node(s):`)
       orphanNodes.forEach(node => {
-        glad.context.consoleOutput.info(`  - ${node.name}`)
+        glad.context.consoleOutput.log(`  - ${node.name}`)
       })
     }
   }
 
-  glad.context.consoleOutput.info(`Nodes: ${totalNodes}, Edges: ${totalEdges}`)
+  glad.context.consoleOutput.log(`Nodes: ${totalNodes}, Edges: ${totalEdges}`)
 
   // Warning of orphan nodes
   if (orphanCount > 0) {
