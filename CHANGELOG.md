@@ -2,6 +2,17 @@
 
 All notable changes to this project will be documented in this file.
 
+## [1.4.0]  2025-12-31
+
+    - Major performance optimization for large graphs: 17.5x faster processing of complex dependency graphs
+    - Implemented dynamic retry limits in layering algorithm based on graph size (max 99, min 10, scaled by node count / 10)
+    - Added early convergence detection with stable iteration tracking (stops after 3 identical layer arrangements)
+    - Introduced edge counting caching system with Map-based cache for expensive getOutIn() calculations
+    - Cache invalidation on graph changes with efficient string-based keys using sorted node IDs
+    - Optimized layering functions to use cached edge counting operations
+    - Reduced computational complexity from potentially millions of edge traversals to cached lookups
+    - Performance improvement: Large graphs (323 nodes, 1224 edges) now process in ~8 seconds instead of 2+ minutes
+
 ## [1.3.9]  2025-12-28
 
     - Update repository URLs to point to correct GitHub repository (jpdup/glad)
