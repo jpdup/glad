@@ -2,6 +2,11 @@
 
 All notable changes to this project will be documented in this file.
 
+## [1.4.1]  2026-01-07
+
+    - Fix upward dependency count discrepancy: Count now accurately reflects rendered upward dependencies across all view modes and line filtering options
+    - Upward dependency detection now based on actual rendering positions rather than layout simulation, ensuring consistency between reported counts and visual output
+
 ## [1.4.0]  2025-12-31
 
     - Major performance optimization for large graphs: 17.5x faster processing of complex dependency graphs
